@@ -22,7 +22,7 @@ class HomeController extends Controller
         $about = About::where('id', 1)->first();
         $services = Service::latest()->get();
         $skills = Skill::orderBy('name', 'ASC')->get();
-        $projects = Project::orderBy('id', 'DESC')->get();
+        $projects = Project::orderBy('top', 'DESC')->get();
         $formations = Formation::latest()->get();
 
         return view('project.home.welcome', compact('about', 'services', 'projects', 'formations', 'skills'));

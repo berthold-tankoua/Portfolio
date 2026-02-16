@@ -7,7 +7,6 @@
 @php
     $categories = App\Models\Category::orderBy('id', 'ASC')->get();
     $about = App\Models\About::first();
-    $top_projects = App\Models\Project::orderBy('top', 'DESC')->get();
 @endphp
 <div class="main-content style-fullwidth section-onepage">
 
@@ -37,10 +36,10 @@
                         <ul class="list-icon d-flex justify-content-center">
                             <li><a href="{{ $about->linkeldin_link }}" class="icon-LinkedIn"></a></li>
                             <li> <a href="{{ $about->gitlab_link }}" class="icon-GitHub"></a></li>
-                            <li><a href="{{ $about->twitter_link }}" class="icon-X"></a></li>
-                            <li><a href="{{ $about->facebook_link }}" class="icon-facebook"></a></li>
+                            <li><a href="{{ $about->facebook_link }}" class="icon-X"></a></li>
                         </ul>
-                    </div>
+                    </div><br>
+
                 </div>
                 <div class="col-lg-8">
                     <!-- section-about -->
@@ -70,8 +69,8 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="title mb_16 split-text effect-blur-fade h3">
-                            Empower Code Intelligence
+                        <h1 class="title mb_16 split-text effect-blur-fade h4">
+                            Backend | Frontend | Agent IA | SEO | Devops
                         </h1>
                         <div class="text_muted-color font-3 mb_43 split-text split-lines-transform">
                             {!! $about->desc1 !!}
@@ -79,7 +78,9 @@
                         <div class="wrap-counter tf-grid-layout md-col-3">
                             <div class="counter-item bs-light-mode">
                                 <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="10">{{ $about->exp_count }}</div>
+                                    <div class="odometer" data-number="{{ $about->exp_count }}">
+                                        {{ $about->exp_count }}
+                                    </div>
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">D'expérience en IT</p>
@@ -90,7 +91,8 @@
                             </div>
                             <div class="counter-item bs-light-mode">
                                 <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="500">{{ $about->proj_count }}</div>
+                                    <div class="odometer" data-number="{{ $about->proj_count }}">
+                                        {{ $about->proj_count }}</div>
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">Clients Satisfaits</p>
@@ -101,8 +103,8 @@
                             </div>
                             <div class="counter-item bs-light-mode">
                                 <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="1">{{ $about->hcust_count }}</div>
-                                    <span class="sub">k</span>
+                                    <div class="odometer" data-number="{{ $about->hcust_count }}">
+                                        {{ $about->hcust_count }}</div>
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">Projets Terminés</p>
@@ -114,113 +116,219 @@
                         </div>
                     </div>
                     <!-- End section-about -->
-
-                    <!-- section-resume-->
-                    <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
-                        <div class="heading-section mb_47">
-                            <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
-                                Education
-                            </div>
-                            <h3 class="text_white fw-5 split-text effect-blur-fade">Education & Formation</h3>
+                    <div class="counter-item bs-light-mode  mt-5 w-100 ">
+                        <div class="info">
+                            <div class="name font-2 text_white mb-4">Compétences</div>
                         </div>
-                        <div class="effect-line-hover">
-                            <div class="wrap-education-item area-effect  scrolling-effect effectTop">
-                                <span class="point"></span>
-                                <div class="education-item">
-                                    <div class="content">
-                                        <h5 class="font-4 mb_4"><a href="#contact" class="link">AI
-                                                Developer</a>
-                                        </h5>
-                                        <span class="text-body-1 font-3">Google Inc.</span>
-                                    </div>
-                                    <div class="date text-caption-1 text_white font-3">
-                                        2020 - Present
-                                    </div>
-                                    <div class="item-shape spotlight">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </div>
+                        <div class="list-icons d-flex  cursor-pointer "
+                            style="overflow-x: scroll;width: 100%; padding-bottom: 10px;">
+                            <div title="PHP"><img src="{{ asset('upload/skills/1794217278408413.png') }}"
+                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
                             </div>
-                            <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                                <span class="point"></span>
-                                <div class="education-item">
-                                    <div class="content">
-                                        <h5 class="font-4 mb_4"><a href="#contact" class="link">Machine
-                                                Learning
-                                                Engineer</a></h5>
-                                        <span class="text-body-1 font-3">Microsoft Inc.</span>
-                                    </div>
-                                    <div class="date text-caption-1 text_white font-3">
-                                        2018 - 2020
-                                    </div>
-                                    <div class="item-shape spotlight">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </div>
+                            <div title="Laravel"><img src="{{ asset('upload/skills/1794217189325281.png') }}"
+                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
                             </div>
-                            <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                                <span class="point"></span>
-                                <div class="education-item">
-                                    <div class="content">
-                                        <h5 class="font-4 mb_4"><a href="#contact" class="link">Data
-                                                Scientist</a></h5>
-                                        <span class="text-body-1 font-3">IBM Inc.</span>
-                                    </div>
-                                    <div class="date text-caption-1 text_white font-3">
-                                        2014 - 2018
-                                    </div>
-                                    <div class="item-shape spotlight">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </div>
+                            <div title="Bootstrap"><img src="{{ asset('upload/skills/1794217322879346.png') }}"
+                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
                             </div>
-                            <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                                <span class="point"></span>
-                                <div class="education-item">
-                                    <div class="content">
-                                        <h5 class="font-4 mb_4"><a href="#contact" class="link">M.Sc. in
-                                                Computer
-                                                Science</a></h5>
-                                        <span class="text-body-1 font-3">Stanford University</span>
-                                    </div>
-                                    <div class="date text-caption-1 text_white font-3">
-                                        2013 - 2014
-                                    </div>
-                                    <div class="item-shape spotlight">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                                <span class="point"></span>
-                                <div class="education-item">
-                                    <div class="content">
-                                        <h5 class="font-4 mb_4"><a href="#contact" class="link">B.Sc. in
-                                                Information
-                                                Technolog</a></h5>
-                                        <span class="text-body-1 font-3">Massachusetts Institute of
-                                            Technology</span>
-                                    </div>
-                                    <div class="date text-caption-1 text_white font-3">
-                                        2008 - 2013
-                                    </div>
-                                    <div class="item-shape spotlight">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </div>
-                            </div>
+                            <div title="Vuejs"><img src="{{ asset('upload/skills/1794217805784333.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="IA"><img src="{{ asset('upload/skills/1846653782352044.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="PWA"><img src="{{ asset('upload/skills/1821402864701050.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Javascript"><img src="{{ asset('upload/skills/1794217521134374.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Css"><img src="{{ asset('upload/skills/1794217351642580.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="HTML"><img src="{{ asset('upload/skills/1794217464578210.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Aws"><img src="{{ asset('upload/skills/1857258320482256.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Git"><img src="{{ asset('upload/skills/1857258344083463.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="MySql"><img src="{{ asset('upload/skills/1794217565856740.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Api"><img src="{{ asset('upload/skills/1794217546197747.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Linux"><img src="{{ asset('upload/skills/1857258827130950.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Meta"><img src="{{ asset('upload/skills/1794217726185141.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
+                            <div title="Test unitaire"><img src="{{ asset('upload/skills/1794217845985882.png') }}"
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;"></div>
                         </div>
                     </div>
-                    <!-- End section-resume -->
                 </div>
             </div>
         </div>
+        <!-- section-portfolio-->
+        <div id="portfolio" class="section-portfolio style-1 spacing-5 section">
+            <div class="heading-section mb_42">
+                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
+                    Portfolio
+                </div>
+                <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
+            </div>
+            <div class="row">
+                @foreach ($projects as $project)
+                    <article class="col-md-6 mb-4">
 
+                        <div class="p-2 mb-2 text-white">
+                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                <h6 class="mb-2 me-4">{{ $project->name }} </h6>
+                                @php
+                                    $tools = $project->tool_path;
+                                    $project_tools = explode(',', $tools);
+                                @endphp
+                                <div class="d-flex p-tool overflow-hidden mb-2">
+                                    @foreach ($project_tools as $key => $tool)
+                                        <div class="item me-4">
+                                            <img src="{{ asset($tool) }}" alt="portofolio-skill" width="23"
+                                                height="23">
+                                        </div>
+                                        @if ($key == 8)
+                                            @php
+                                                break;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="text-white mbl-date">{{ $project->start_date }} |
+                                    {{ $project->end_date }}</div>
+                                <a href="{{ $project->url }}"
+                                    class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                            </div>
+                        </div><!--//resume-timeline-item-header-->
+
+                        <div class="containers">
+                            <img class="project_img"
+                                style="border-radius: 5px; height: 280px; width: 100%; object-fit: cover;"
+                                src="{{ asset($project->image1) }}" alt="project image" />
+
+                            <div class="overlay"></div>
+
+                        </div><br>
+
+
+
+                    </article><br><!--//resume-timeline-item-->
+                @endforeach
+            </div>
+        </div>
+        <!-- End section-portfolio -->
+        <!-- section-resume-->
+        <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
+            <div class="heading-section mb_47">
+                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
+                    Education
+                </div>
+                <h3 class="text_white fw-5 split-text effect-blur-fade">Education & Formation</h3>
+            </div>
+            <div class="effect-line-hover">
+                <div class="wrap-education-item area-effect  scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact" class="link">AI
+                                    Developer</a>
+                            </h5>
+                            <span class="text-body-1 font-3">Google Inc.</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            2020 - Present
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-education-item area-effect scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact" class="link">Machine
+                                    Learning
+                                    Engineer</a></h5>
+                            <span class="text-body-1 font-3">Microsoft Inc.</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            2018 - 2020
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-education-item area-effect scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact" class="link">Data
+                                    Scientist</a></h5>
+                            <span class="text-body-1 font-3">IBM Inc.</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            2014 - 2018
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-education-item area-effect scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact" class="link">M.Sc. in
+                                    Computer
+                                    Science</a></h5>
+                            <span class="text-body-1 font-3">Stanford University</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            2013 - 2014
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-education-item area-effect scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact" class="link">B.Sc. in
+                                    Information
+                                    Technolog</a></h5>
+                            <span class="text-body-1 font-3">Massachusetts Institute of
+                                Technology</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            2008 - 2013
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End section-resume -->
         <!-- section-service -->
         <div id="services" class="section-service section spacing-5">
             <div class="heading-section mb_43">
@@ -299,82 +407,6 @@
             </div>
         </div>
         <!-- End section-service -->
-
-        <!-- section-portfolio-->
-        <div id="portfolio" class="section-portfolio style-1 spacing-5 section">
-            <div class="heading-section mb_42">
-                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
-                    Portfolio
-                </div>
-                <h3 class="text_white fw-5  split-text effect-blur-fade">Featured Projects</h3>
-            </div>
-            <div class="tabs-content-wrap tf-grid-layout md-col-2">
-                <div class="portfolio-item">
-                    <a href="images/user/portfolio-item-1-1.webp" data-fancybox="gallery" class="img-style">
-                        <img decoding="async" loading="lazy" src="images/user/portfolio-item-1-1.webp"
-                            srcset="images/user/portfolio-item-1-1.webp 582w" sizes="(max-width: 582px) 100vw, 582px"
-                            width="582" height="388" alt="portfolio">
-                        <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
-                            Conversational AI
-                        </div>
-                    </a>
-                    <h5 class=" title font-4 text_white"><a href="#" class="link">AI-Powered
-                            Chatbot</a>
-                    </h5>
-                    <div class="item-shape">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <a href="images/user/portfolio-item-3-1.webp" data-fancybox="gallery" class="img-style">
-                        <img decoding="async" loading="lazy" src="images/user/portfolio-item-3-1.webp"
-                            srcset="images/user/portfolio-item-3-1.webp 582w" sizes="(max-width: 582px) 100vw, 582px"
-                            width="582" height="388" alt="portfolio">
-                        <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
-                            Predictive Analytics
-                        </div>
-                    </a>
-                    <h5 class=" title font-4 text_white"> <a href="#" class="link">Sales Forecast
-                            Dashboard</a>
-                    </h5>
-                    <div class="item-shape">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <a href="images/user/portfolio-item-2-1.webp" data-fancybox="gallery" class="img-style">
-                        <img decoding="async" loading="lazy" src="images/user/portfolio-item-2-1.webp"
-                            srcset="images/user/portfolio-item-2-1.webp 582w" sizes="(max-width: 582px) 100vw, 582px"
-                            width="582" height="388" alt="portfolio">
-                        <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
-                            Computer Vision
-                        </div>
-                    </a>
-                    <h5 class=" title font-4 text_white"> <a href="#" class="link">Real-Time Object
-                            Detection</a></h5>
-                    <div class="item-shape">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <a href="images/user/portfolio-item-4-1.webp" data-fancybox="gallery" class="img-style">
-                        <img decoding="async" loading="lazy" src="images/user/portfolio-item-4-1.webp"
-                            srcset="images/user/portfolio-item-4-1.webp 582w" sizes="(max-width: 582px) 100vw, 582px"
-                            width="582" height="388" alt="portfolio">
-                        <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
-                            Resume Pro
-                        </div>
-                    </a>
-                    <h5 class=" title font-4 text_white"> <a href="#" class="link">Resume ZenG
-                            pro</a>
-                    </h5>
-                    <div class="item-shape">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End section-portfolio -->
 
         <!-- section-testimonial-->
         <div id="testimonial" class="section-testimonial style-1 section spacing-5 sw-layout">

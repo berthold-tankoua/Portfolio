@@ -46,9 +46,9 @@
                                 alt="avatar">
                         </div>
                         <div class="info">
-                            <h6 class="font-4 mb_4">Brecht Tankoua</h6>
+                            <h6 class="font-4 mb_4">Brecht</h6>
                             <div class="text-label text-uppercase fw-6 text_primary-color font-3  letter-spacing-1">
-                                Développeur Web & IA</div>
+                                Dev fullstack</div>
                         </div>
                     </div>
                     <ul class="nav-menu style-1 lg-hide">
@@ -100,7 +100,7 @@
                             href="https://drive.google.com/file/d/1ZxPwlSlxf8VEejr83onpOeiRqc6jWygf/view?usp=sharing"
                             class="tf-btn style-1 animate-hover-btn">
                             <span>
-                                Mon CV
+                                CV
                             </span>
                         </a>
                         <a class="menu-button show-menu-mobile  d-lg-none link-no-action" data-target="#menu-1"
@@ -164,9 +164,9 @@
                                 height="68" alt="avatar">
                         </div>
                         <div class="info">
-                            <h6 class="font-4 mb_4">Brecht Tankoua</h6>
+                            <h6 class="font-4 mb_4">Brecht</h6>
                             <div class="text-label text-uppercase fw-6 text_primary-color font-3  letter-spacing-1">
-                                Développeur Web & IA</div>
+                                Dev Web & IA</div>
                         </div>
                     </div>
                     <ul class="nav-menu style-1 lg-hide">
@@ -212,7 +212,7 @@
                             href="https://drive.google.com/file/d/1ZxPwlSlxf8VEejr83onpOeiRqc6jWygf/view?usp=sharing"
                             class="tf-btn style-1 animate-hover-btn">
                             <span>
-                                Mon CV
+                                CV
                             </span>
                         </a>
                         <a class="menu-button show-menu-mobile  d-lg-none link-no-action" data-target="#menu-2"
