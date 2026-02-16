@@ -13,46 +13,45 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-     /*===========================================
+    /*===========================================
     HOME PAGE VIEW PAGE
     ===========================================*/
-    public function index(){
-      
-        $about = About::where('id',1)->first();
+    public function index()
+    {
+
+        $about = About::where('id', 1)->first();
         $services = Service::latest()->get();
-        $skills = Skill::orderBy('name','ASC')->get();
-        $projects = Project::orderBy('id','DESC')->get();
+        $skills = Skill::orderBy('name', 'ASC')->get();
+        $projects = Project::orderBy('id', 'DESC')->get();
         $formations = Formation::latest()->get();
 
-        return view('welcome', compact('about','services','projects','formations','skills')); 
-
+        return view('project.home.welcome', compact('about', 'services', 'projects', 'formations', 'skills'));
     } //End Method
-    public function ProjectCategory($id){
-        $category = Category::where('id',$id)->first();
-        $projects = Project::where('category_id',$id)->orderBy('id','DESC')->get();
+    public function ProjectCategory($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $projects = Project::where('category_id', $id)->orderBy('id', 'DESC')->get();
         $services = Service::latest()->get();
-        $skills = Skill::orderBy('name','ASC')->get();
-      
+        $skills = Skill::orderBy('name', 'ASC')->get();
+
         $formations = Formation::latest()->get();
-        if ($id==4) {
-            return view('frontend.category.maintenance', compact('services','projects','formations','skills','category')); 
-        } elseif ($id==3) {
-            return view('frontend.category.infographie', compact('services','projects','formations','skills','category')); 
-        } else{
-            return view('category', compact('services','projects','formations','skills','category')); 
+        if ($id == 4) {
+            return view('frontend.category.maintenance', compact('services', 'projects', 'formations', 'skills', 'category'));
+        } elseif ($id == 3) {
+            return view('frontend.category.infographie', compact('services', 'projects', 'formations', 'skills', 'category'));
+        } else {
+            return view('category', compact('services', 'projects', 'formations', 'skills', 'category'));
         }
-        
-        
-
     } //End Method
 
-    public function ProjectDetail($id){
-        $about = About::where('id',1)->first();
+    public function ProjectDetail($id)
+    {
+        $about = About::where('id', 1)->first();
         $services = Service::latest()->get();
-        $skills = Skill::orderBy('name','ASC')->get();
-        $projects = Project::orderBy('id','DESC')->get();
+        $skills = Skill::orderBy('name', 'ASC')->get();
+        $projects = Project::orderBy('id', 'DESC')->get();
         $formations = Formation::latest()->get();
-        $project=Project::where('id',$id)->first();
-        return view('project_detail', compact('project','formations','skills','services','projects')); 
+        $project = Project::where('id', $id)->first();
+        return view('project_detail', compact('project', 'formations', 'skills', 'services', 'projects'));
     }
 }

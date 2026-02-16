@@ -1,16 +1,15 @@
-@extends('dashboard')
+@extends('admin_master')
 
 @section('admin')
-
 @section('title')
-Admin | Dashboard
+    Admin | Dashboard
 @endsection
 @php
 
- $projects = count(App\Models\Project::get());
- $services = count(App\Models\Service::get());
- $blogs = count(App\Models\Blog::get());
- $contacts = count(App\Models\Contact::get());
+    $projects = count(App\Models\Project::get());
+    $services = count(App\Models\Service::get());
+    $blogs = count(App\Models\Blog::get());
+    $contacts = count(App\Models\Contact::get());
 
 @endphp
 <div class="container-fluid">
@@ -114,26 +113,26 @@ Admin | Dashboard
                     <h6 class="m-0 font-weight-bold text-primary">Brecht Tankoua</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Projets <span
-                            class="float-right">{{ $projects }}%</span></h4>
+                    <h4 class="small font-weight-bold">Projets <span class="float-right">{{ $projects }}%</span>
+                    </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $projects }}%"
                             aria-valuenow="{{ $projects }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Services <span
-                            class="float-right">{{ $services }}%</span></h4>
+                    <h4 class="small font-weight-bold">Services <span class="float-right">{{ $services }}%</span>
+                    </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $services }}%"
                             aria-valuenow="{{ $services }}" aria-valuemin="0" aria-valuemax="25"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Messages <span
-                            class="float-right">{{ $contacts }}%</span></h4>
+                    <h4 class="small font-weight-bold">Messages <span class="float-right">{{ $contacts }}%</span>
+                    </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar" role="progressbar" style="width: {{ $contacts }}%"
                             aria-valuenow="{{ $contacts }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Articles <span
-                            class="float-right">{{ $blogs }}%</span></h4>
+                    <h4 class="small font-weight-bold">Articles <span class="float-right">{{ $blogs }}%</span>
+                    </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-info" role="progressbar" style="width: {{ $blogs }}%"
                             aria-valuenow="{{ $blogs }}" aria-valuemin="0" aria-valuemax="100"></div>

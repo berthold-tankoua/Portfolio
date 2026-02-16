@@ -1,9 +1,8 @@
-@extends('dashboard')
+@extends('admin_master')
 
 @section('admin')
-
 @section('title')
-Portofolio | Prix
+    Portofolio | Prix
 @endsection
 <div class="container-fluid">
     <div class="row">
@@ -24,14 +23,15 @@ Portofolio | Prix
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($pricings as $item)
-                                <tr>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->price}} FCFA</td>
-                                    <td width="10%" class="text-center">
-                                        <a href="{{route('pricing.edit',$item->id)}}" class="btn btn-info btn-sm" style="margin-bottom:5px" ><i class="fas fa-edit" title="Editer"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($pricings as $item)
+                                    <tr>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->price }} FCFA</td>
+                                        <td width="10%" class="text-center">
+                                            <a href="{{ route('pricing.edit', $item->id) }}" class="btn btn-info btn-sm"
+                                                style="margin-bottom:5px"><i class="fas fa-edit" title="Editer"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -44,78 +44,86 @@ Portofolio | Prix
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Ajouter Prix</h1>
                 </div>
-                <form action="{{route('pricing.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pricing.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="category">Selectionner une Categorie</label>
                         <div class="controls">
-                            <select name="category_id" class="form-control"  required oninvalid="this.setCustomValidity('Selectionner une categorie')" oninput="this.setCustomValidity('')">
+                            <select name="category_id" class="form-control" required
+                                oninvalid="this.setCustomValidity('Selectionner une categorie')"
+                                oninput="this.setCustomValidity('')">
                                 <option value="" selected="" disabled="">Selectionner Categorie</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>	
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
-                            @error('category_id') 
+                            @error('category_id')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror 
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name">Nom Complet</label>
-                        <div class="controls">         
-                            <input type="text" class="form-control form-control-user" name="name" placeholder="Nom">
+                        <div class="controls">
+                            <input type="text" class="form-control form-control-user" name="name"
+                                placeholder="Nom">
                             @error('name')
-                            <span class="text-danger">{{$message}}</span>
-                           @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="desc">Desc</label>
-                        <div class="controls">         
-                            <input type="text" class="form-control form-control-user" name="desc" placeholder="Description">
+                        <div class="controls">
+                            <input type="text" class="form-control form-control-user" name="desc"
+                                placeholder="Description">
                             @error('desc')
-                            <span class="text-danger">{{$message}}</span>
-                           @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="controls">
                             <label for="name">Prix FCFA</label>
-                            <input type="text" class="form-control form-control-user" name="price" placeholder="Prix service">
+                            <input type="text" class="form-control form-control-user" name="price"
+                                placeholder="Prix service">
                             @error('price')
-                            <span class="text-danger">{{$message}}</span>
-                           @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <h5>Avantages <span class="text-danger">*</span></h5>
-                        <div class="controls" >
-                            <input type="text" name="advantage" class="form-control" value="Aucun" data-role="tagsinput">
-                            @error('advantage') 
-                            <span class="text-danger">{{ $message }}</span>
+                        <div class="controls">
+                            <input type="text" name="advantage" class="form-control" value="Aucun"
+                                data-role="tagsinput">
+                            @error('advantage')
+                                <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <h5>Desavantages <span class="text-danger">*</span></h5>
-                        <div class="controls" >
-                            <input type="text" name="disadvantage" class="form-control" value="Aucun" data-role="tagsinput">
-                            @error('disadvantage') 
-                            <span class="text-danger">{{ $message }}</span>
+                        <div class="controls">
+                            <input type="text" name="disadvantage" class="form-control" value="Aucun"
+                                data-role="tagsinput">
+                            @error('disadvantage')
+                                <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="controls">
                             <label for="name">WhatsApp Msg</label>
-                            <input type="text" class="form-control form-control-user" name="msg_txt" placeholder="Message WhatsApp">
+                            <input type="text" class="form-control form-control-user" name="msg_txt"
+                                placeholder="Message WhatsApp">
                             @error('msg_txt')
-                            <span class="text-danger">{{$message}}</span>
-                           @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <input type="submit" value="Enregistrer" class="btn btn-primary btn-user btn-block">
-                        
+
             </div>
         </div>
     </div>

@@ -27,4 +27,8 @@ function checkCounters() {
     });
 }
 
-
+if ($(".counter-scroll").length > 0) {
+    $(window).on("scroll", checkCounters);
+    $(window).on("load", checkCounters);
+    $(document).ready(checkCounters);
+}
