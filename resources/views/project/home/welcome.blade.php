@@ -4,10 +4,7 @@
 @section('title')
     Brecht Tankoua | Portfolio
 @endsection
-@php
-    $categories = App\Models\Category::orderBy('id', 'ASC')->get();
-    $about = App\Models\About::first();
-@endphp
+
 <div class="main-content style-fullwidth section-onepage">
 
     <div class="tf-container w-6">
@@ -176,639 +173,463 @@
             </div>
         </div>
         <!-- section-portfolio-->
-        <div id="portfolio" class="section-portfolio style-1 spacing-5 section">
-            <div class="heading-section mb_42">
-                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
-                    Portfolio
+        <div class="container">
+            <div id="portfolio" class="section-portfolio style-1 spacing-5 section" s>
+                <div class="heading-section mb_42">
+                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
+                        Portfolio
+                    </div>
+                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
                 </div>
-                <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
-            </div>
-            <div class="row">
-                @foreach ($projects as $project)
-                    <article class="col-md-6 mb-4">
+                <div class="tab-slide  mb_32">
+                    <ul class="menu-tab d-flex align-items-center" role="tablist">
+                        <li class="item-slide-effect"></li>
+                        <li class="nav-tab-item active" role="presentation">
+                            <a href="#all" class="text-button tab-link fw-6 active font-3"
+                                data-bs-toggle="tab">Mes Projets</a>
+                        </li>
+                        @foreach ($categories as $category)
+                            <li class="nav-tab-item" role="presentation">
+                                <a href="#{{ $category->slug }}" class="text-button tab-link fw-6 font-3"
+                                    data-bs-toggle="tab">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
 
-                        <div class="p-2 mb-2 text-white">
-                            <div class="d-flex flex-wrap align-items-center mb-3">
-                                <h6 class="mb-2 me-4">{{ $project->name }} </h6>
-                                @php
-                                    $tools = $project->tool_path;
-                                    $project_tools = explode(',', $tools);
-                                @endphp
-                                <div class="d-flex p-tool overflow-hidden mb-2">
-                                    @foreach ($project_tools as $key => $tool)
-                                        <div class="item me-4">
-                                            <img src="{{ asset($tool) }}" alt="portofolio-skill" width="23"
-                                                height="23">
-                                        </div>
-                                        @if ($key == 8)
+
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="all" role="tabpanel">
+                        <div class="row">
+                            @foreach ($projects as $project)
+                                <article class="col-md-6 mb-4">
+                                    <div class="p-2 mb-2 text-white">
+                                        <div class="d-flex flex-wrap align-items-center mb-3">
+                                            <a href="{{ url('project/' . $project->id . '/detail') }}"
+                                                class="mb-2 me-4 h6">{{ $project->name }} </a>
                                             @php
-                                                break;
+                                                $tools = $project->tool_path;
+                                                $project_tools = explode(',', $tools);
                                             @endphp
-                                        @endif
-                                    @endforeach
+                                            <div class="d-flex p-tool overflow-hidden mb-2">
+                                                @foreach ($project_tools as $key => $tool)
+                                                    <div class="item me-4">
+                                                        <img src="{{ asset($tool) }}" alt="portofolio-skill"
+                                                            width="23" height="23">
+                                                    </div>
+                                                    @if ($key == 8)
+                                                        @php
+                                                            break;
+                                                        @endphp
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <div class="text-white mbl-date">{{ $project->start_date }} |
+                                                {{ $project->end_date }}</div>
+                                            <a href="{{ $project->url }}"
+                                                class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                                        </div>
+                                    </div><!--//resume-timeline-item-header-->
+
+                                    <a href="{{ url('project/' . $project->id . '/detail') }}" class="containers"
+                                        style="border-radius: 5px; height: 280px; width: 100%;">
+                                        <img class="project_img"
+                                            style="border-radius: 5px; height: 280px; width: 100%; object-fit:fill;"
+                                            src="{{ asset($project->image1) }}" alt="project image" />
+                                        <div class="overlay"></div>
+                                    </a><br>
+                                </article><br><!--//resume-timeline-item-->
+                            @endforeach
+                        </div>
+                    </div>
+                    @foreach ($categories as $category)
+                        <div class="tab-pane" id="{{ $category->slug }}" role="tabpanel">
+                            @php
+                                $category_projects = App\Models\Project::where('category_id', $category->id)
+                                    ->orderBy('top', 'DESC')
+                                    ->limit(4)
+                                    ->get();
+                            @endphp
+                            <div class="row">
+                                @foreach ($category_projects as $project)
+                                    <article class="col-md-6 mb-4">
+                                        <div class="p-2 mb-2 text-white">
+                                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                                <a href="{{ url('project/' . $project->id . '/detail') }}"
+                                                    class="mb-2 me-4 h6">{{ $project->name }} </a>
+                                                @php
+                                                    $tools = $project->tool_path;
+                                                    $project_tools = explode(',', $tools);
+                                                @endphp
+                                                <div class="d-flex p-tool overflow-hidden mb-2">
+                                                    @foreach ($project_tools as $key => $tool)
+                                                        <div class="item me-4">
+                                                            <img src="{{ asset($tool) }}" alt="portofolio-skill"
+                                                                width="23" height="23">
+                                                        </div>
+                                                        @if ($key == 8)
+                                                            @php
+                                                                break;
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <div class="text-white mbl-date">{{ $project->start_date }} |
+                                                    {{ $project->end_date }}</div>
+                                                <a href="{{ $project->url }}"
+                                                    class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                                            </div>
+                                        </div><!--//resume-timeline-item-header-->
+
+                                        <a href="{{ url('project/' . $project->id . '/detail') }}">
+                                            <img class="project_img"
+                                                style="border-radius: 5px; height: 280px; width: 100%; object-fit: fill;"
+                                                src="{{ asset($project->image1) }}" alt="project image" />
+                                            <div class="overlay"></div>
+                                        </a><br>
+                                    </article><br><!--//resume-timeline-item-->
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+            <!-- section-resume-->
+            <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
+                <div class="heading-section mb_47">
+                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
+                        Education
+                    </div>
+                    <h3 class="text_white fw-5 split-text effect-blur-fade">Education & Formation</h3>
+                </div>
+                <div class="effect-line-hover">
+                    <div class="wrap-education-item area-effect  scrolling-effect effectTop">
+                        <span class="point"></span>
+                        <div class="education-item">
+                            <div class="content">
+                                <h5 class="font-4 mb_4"><a href="#contact" class="link">Licence genie logiciel</a>
+                                </h5>
+                                <span class="text-body-1 font-3">Universite de Yaounde 1</span>
+                            </div>
+                            <div class="date text-caption-1 text_white font-3">
+                                2017 - 2022
+                            </div>
+                        </div>
+                    </div>
+                    @foreach ($formations as $item)
+                        <div class="wrap-education-item area-effect  scrolling-effect effectTop">
+                            <span class="point"></span>
+                            <div class="education-item">
+                                <div class="content">
+                                    <h5 class="font-4 mb_4"><a href="#contact"
+                                            class="link">{{ $item->name }}</a>
+                                    </h5>
+                                    <span class="text-body-1 font-3">{{ $item->place }}</span>
                                 </div>
+                                <div class="date text-caption-1 text_white font-3">
+                                    {{ $item->duration }}
+                                </div>
+
                             </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <div class="text-white mbl-date">{{ $project->start_date }} |
-                                    {{ $project->end_date }}</div>
-                                <a href="{{ $project->url }}"
-                                    class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <!-- End section-resume -->
+            <!-- section-service -->
+            <div id="services" class="section-service section spacing-5">
+                <div class="heading-section mb_43">
+                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_33">
+                        Services
+                    </div>
+                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mess services</h3>
+                </div>
+                @foreach ($services as $key => $item)
+                    <div class="service-item area-effect scrolling-effect effectBottom">
+                        <div class="content-inner d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center content">
+                                <span class="number text-label text_muted-color font-3">0{{ $key + 1 }}/</span>
+                                <h5 class="text_white font-4"><a href="#contact"
+                                        class="link">{{ $item->name }}</a>
+                                </h5>
                             </div>
-                        </div><!--//resume-timeline-item-header-->
+                            <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
 
-                        <div class="containers">
-                            <img class="project_img"
-                                style="border-radius: 5px; height: 280px; width: 100%; object-fit: cover;"
-                                src="{{ asset($project->image1) }}" alt="project image" />
-
-                            <div class="overlay"></div>
-
-                        </div><br>
-
-
-
-                    </article><br><!--//resume-timeline-item-->
+                        </div>
+                    </div>
                 @endforeach
             </div>
+            <!-- End section-service -->
+
+            <!-- section-testimonial-->
+            <div id="testimonial" class="section-testimonial style-1 section spacing-5 sw-layout">
+                <div class="heading-section mb_43 d-flex align-items-end justify-content-between">
+                    <div>
+                        <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
+                            Temoignages
+                        </div>
+                        <h3 class="text_white fw-5  split-text effect-blur-fade">Avis des clients</h3>
+                    </div>
+                    <div class="wrap-sw-button d-flex gap_12 ">
+                        <div class="sw-button nav-prev-layout">
+                            <i class="icon-CaretLeft"></i>
+                        </div>
+                        <div class="sw-button nav-next-layout ">
+                            <i class="icon-CaretRight"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1"
+                    data-space-lg="12" data-space-md="12" data-space="12">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-item area-effect">
+                                <div class="icon">
+                                    <i class="icon-quote"></i>
+                                </div>
+                                <p class="text-body-2 text_white mb_21">"Très satisfaite du travail réalisé. En plus du
+                                    développement du site, Brecht a mis en place une stratégie marketing efficace (Meta
+                                    Ads, optimisation des visuels et ciblage précis). Nous avons constaté une
+                                    augmentation notable des commandes en ligne."</p>
+                                <div class="athor">
+                                    <h5 class="name text_white mb_4 font-4"> <a href="#" class="link">Crostel
+                                            Tchinda</a>
+                                    </h5>
+                                    <span class="text-label text-uppercase text_primary-color font-3">Commercant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item area-effect">
+                                <div class="icon">
+                                    <i class="icon-quote"></i>
+                                </div>
+                                <p class="text-body-2 text_white mb_21">"Travailler avec Brecht a été une excellente
+                                    expérience. Il a conçu un site web moderne et professionnel qui reflète parfaitement
+                                    mon image d’agent immobilier. Le design est élégant, rapide et adapté aux mobiles.
+                                    J’ai déjà reçu des retours positifs de mes clients."</p>
+                                <div class="athor">
+                                    <h5 class="name text_white mb_4 font-4"> <a href="#"
+                                            class="link">Gides</a>
+                                    </h5>
+                                    <span class="text-label text-uppercase text_primary-color font-3">CEO
+                                        Agent Immobilier</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item area-effect">
+                                <div class="icon">
+                                    <i class="icon-quote"></i>
+                                </div>
+                                <p class="text-body-2 text_white mb_21">"Nous avons confié notre marketing Meta
+                                    (Facebook et Instagram) à Brecht et les résultats ont été très positifs. Il a mis en
+                                    place des campagnes publicitaires ciblées qui nous ont permis d’augmenter
+                                    significativement les demandes d’inscription."</p>
+                                <div class="athor">
+                                    <h5 class="name text_white mb_4 font-4"> <a href="#"
+                                            class="link">Bertrand claude</a>
+                                    </h5>
+                                    <span class="text-label text-uppercase text_primary-color font-3">
+                                        Auto Ecole</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End section-testimonial -->
+
+            <!-- section-pricing-->
+            <div id="pricing" class="section-pricing flat-animate-tab spacing-5 section">
+                <div class="heading-section mb_42">
+                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
+                        Tarifs
+                    </div>
+                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Tarifs</h3>
+                </div>
+                <div class="tab-slide  mb_32">
+                    <ul class="menu-tab d-flex align-items-center" role="tablist">
+                        <li class="item-slide-effect"></li>
+                        <li class="nav-tab-item active" role="presentation">
+                            <a href="#standard-plan" class="text-button tab-link fw-6 active font-3"
+                                data-bs-toggle="tab">Plan Gratuit</a>
+                        </li>
+                        <li class="nav-tab-item" role="presentation">
+                            <a href="#premium-plan" class="text-button tab-link fw-6 font-3"
+                                data-bs-toggle="tab">Plan Premium</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="standard-plan" role="tabpanel">
+                        <div class="pricing-item style-1 bs-light-mode area-effect">
+                            <h4 class="title">Gratuit</h4>
+                            <ul class="list-check d-grid gap_8">
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
+                                        class="icon-check"></i>Audit simple gratuit</li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
+                                        class="icon-check"></i>Conseil personnalisé</li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
+                                        class="icon-check"></i>Devis gratuit
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
+                                        class="icon-check"></i>Service client réactif</li>
+                            </ul>
+                            <div class="wrap-pricing">
+                                <h3 class="text_white d-flex align-items-center gap_4 mb_20">$0 <span
+                                        class="text-caption-1 text-caption-1 text_muted-color">/mois</span>
+                                </h3>
+                                <a href="#contact" class="tf-btn style-1 animate-hover-btn">
+                                    <span>
+                                        Démarrer !
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="premium-plan" role="tabpanel">
+                        <div class="pricing-item style-1 bs-light-mode area-effect">
+                            <h4 class="title">Premium
+                            </h4>
+                            <ul class="list-check d-grid gap_8">
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Développement Web sur mesure (backend & frontend)
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Intégration de solutions IA (chatbot, automatisation)
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Stratégie marketing digitale (Meta Ads & pubs)
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Optimisation SEO & performance technique
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Analyse des données & besoins
+                                </li>
+                                <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8">
+                                    <i class="icon-check"></i>Support prioritaire 7j/7
+                                </li>
+
+                            </ul>
+                            <div class="wrap-pricing">
+                                <h3 class="text_white d-flex align-items-center gap_4 mb_20">$20 <span
+                                        class="text-caption-1 text-caption-1 text_muted-color">/heure</span>
+                                </h3>
+                                <a href="#contact" class="tf-btn style-1 animate-hover-btn">
+                                    <span>
+                                        Démarrer !
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="item-shape spotlight">
+                                <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
+                                    alt="item">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End section-pricing -->
+
+            <!-- section-contact-->
+            <div id="contact" class="section-contact style-1 section spacing-6">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="heading-section mb_44">
+                            <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_33">
+                                Contact
+                            </div>
+                            <div class="title mb_40">
+                                <h3 class="text_white fw-5 animationtext clip">
+                                    Construisons <br><span class="tf-text s1 cd-words-wrapper text_primary-color">
+                                        <span class="item-text is-visible">Votre site web</span>
+                                        <span class="item-text is-hidden">Votre stratégie digitale</span>
+                                        <span class="item-text is-hidden">Vos agents IA</span>
+                                    </span>
+
+                                </h3>
+
+                                <p class="text_white title fw-5">Travaillons ensemble pour développer votre business
+                                </p>
+
+                            </div>
+                            <div class="heading-title">
+                                <div class="mb_12">
+                                    <h4 class="text_white fw-4 mb_4"><a href="#"
+                                            class="hover-underline-link link">{{ $about->email }}</a></h4>
+                                    <p class="text-caption-2 text_secondary-color font-3">Basé à
+                                        {{ $about->adress }}
+                                    </p>
+                                </div>
+                                <ul class="list-icon d-flex justify-content-center">
+                                    <li><a href="{{ $about->linkedin_link }}" class="icon-LinkedIn"></a></li>
+                                    <li> <a href="{{ $about->gitlab_link }}" class="icon-GitHub"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <form class="form-contact bs-light-mode">
+                            <div class="d-grid gap_24  mb_24">
+                                <fieldset class="">
+                                    <input id="name" type="text" placeholder="Votre nom" name="name"
+                                        tabindex="2" aria-required="true" required="">
+                                </fieldset>
+                                <fieldset class="">
+                                    <input class="" type="email" placeholder="Votre email" name="email"
+                                        tabindex="2" value="" id="email" aria-required="true"
+                                        required="">
+                                </fieldset>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <select class="form-select" name="subject" id="subject"
+                                            style="background: transparent; color: #888585; border: 1px solid #555; padding: 10px; border-radius: 5px;font-size: 16px;"
+                                            aria-required="true" required="">
+                                            <option value="">Sélectionnez un plan</option>
+                                            <option value="plan_gratuit">Plan gratuit</option>
+                                            <option value="plan_premium">Plan premium</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-select" name="service" id="service"
+                                            style="background: transparent; color: #888585; border: 1px solid #555; padding: 10px; border-radius: 5px;font-size: 16px;"
+                                            aria-required="true" required="">
+                                            <option value="">Sélectionnez un service</option>
+                                            @foreach ($services as $service)
+                                                <option value="{{ $service->name }}">{{ $service->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <fieldset>
+                                    <textarea id="message" class="" rows="4" placeholder="votre Message..." tabindex="2"
+                                        aria-required="true" required=""></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="button-submit">
+                                <button class="tf-btn style-1 animate-hover-btn" type="submit">
+                                    <span>
+                                        Envoyer !
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <p class="font-3 text_secondary-color text-center">© 2025 Brecht Tankoua. All Rights Reserved.</p>
+            </div>
+            <!-- End section-contact -->
+
         </div>
         <!-- End section-portfolio -->
-        <!-- section-resume-->
-        <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
-            <div class="heading-section mb_47">
-                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
-                    Education
-                </div>
-                <h3 class="text_white fw-5 split-text effect-blur-fade">Education & Formation</h3>
-            </div>
-            <div class="effect-line-hover">
-                <div class="wrap-education-item area-effect  scrolling-effect effectTop">
-                    <span class="point"></span>
-                    <div class="education-item">
-                        <div class="content">
-                            <h5 class="font-4 mb_4"><a href="#contact" class="link">AI
-                                    Developer</a>
-                            </h5>
-                            <span class="text-body-1 font-3">Google Inc.</span>
-                        </div>
-                        <div class="date text-caption-1 text_white font-3">
-                            2020 - Present
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-                <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                    <span class="point"></span>
-                    <div class="education-item">
-                        <div class="content">
-                            <h5 class="font-4 mb_4"><a href="#contact" class="link">Machine
-                                    Learning
-                                    Engineer</a></h5>
-                            <span class="text-body-1 font-3">Microsoft Inc.</span>
-                        </div>
-                        <div class="date text-caption-1 text_white font-3">
-                            2018 - 2020
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-                <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                    <span class="point"></span>
-                    <div class="education-item">
-                        <div class="content">
-                            <h5 class="font-4 mb_4"><a href="#contact" class="link">Data
-                                    Scientist</a></h5>
-                            <span class="text-body-1 font-3">IBM Inc.</span>
-                        </div>
-                        <div class="date text-caption-1 text_white font-3">
-                            2014 - 2018
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-                <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                    <span class="point"></span>
-                    <div class="education-item">
-                        <div class="content">
-                            <h5 class="font-4 mb_4"><a href="#contact" class="link">M.Sc. in
-                                    Computer
-                                    Science</a></h5>
-                            <span class="text-body-1 font-3">Stanford University</span>
-                        </div>
-                        <div class="date text-caption-1 text_white font-3">
-                            2013 - 2014
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-                <div class="wrap-education-item area-effect scrolling-effect effectTop">
-                    <span class="point"></span>
-                    <div class="education-item">
-                        <div class="content">
-                            <h5 class="font-4 mb_4"><a href="#contact" class="link">B.Sc. in
-                                    Information
-                                    Technolog</a></h5>
-                            <span class="text-body-1 font-3">Massachusetts Institute of
-                                Technology</span>
-                        </div>
-                        <div class="date text-caption-1 text_white font-3">
-                            2008 - 2013
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End section-resume -->
-        <!-- section-service -->
-        <div id="services" class="section-service section spacing-5">
-            <div class="heading-section mb_43">
-                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_33">
-                    Services
-                </div>
-                <h3 class="text_white fw-5  split-text effect-blur-fade">AI Solutions That Matter</h3>
-            </div>
-            <div class="service-item area-effect scrolling-effect effectBottom">
-                <div class="content-inner d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center content">
-                        <span class="number text-label text_muted-color font-3">01/</span>
-                        <h5 class="text_white font-4"><a href="#contact" class="link">Custom AI
-                                Solutions</a>
-                        </h5>
-                    </div>
-                    <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
-                    <div class="item-shape spotlight">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="img-hover">
-                    <img src="images/item/service-item-1.webp" width="140" height="140" alt="item">
-                </div>
-
-            </div>
-            <div class="service-item area-effect scrolling-effect effectBottom">
-                <div class="content-inner d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center content">
-                        <span class="number text-label text_muted-color font-3">02/</span>
-                        <h5 class="text_white font-4"><a href="#contact" class="link">Data Analysis &
-                                Visualization</a>
-                        </h5>
-                    </div>
-                    <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
-                    <div class="item-shape spotlight">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="img-hover">
-                    <img src="images/item/service-item-2.webp" width="140" height="140" alt="item">
-                </div>
-            </div>
-            <div class="service-item area-effect scrolling-effect effectBottom">
-                <div class="content-inner d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center content">
-                        <span class="number text-label text_muted-color font-3">03/</span>
-                        <h5 class="text_white font-4"><a href="#contact" class="link">Machine Learning
-                                Automation</a>
-                        </h5>
-                    </div>
-                    <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
-                    <div class="item-shape spotlight">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="img-hover">
-                    <img src="images/item/service-item-3.webp" width="140" height="140" alt="item">
-                </div>
-            </div>
-            <div class="service-item area-effect scrolling-effect effectBottom">
-                <div class="content-inner d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center content">
-                        <span class="number text-label text_muted-color font-3">04/</span>
-                        <h5 class="text_white font-4"><a href="#contact" class="link">AI Consulting &
-                                Training</a></h5>
-                    </div>
-                    <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
-                    <div class="item-shape spotlight">
-                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                    </div>
-                </div>
-                <div class="img-hover">
-                    <img src="images/item/service-item-4.webp" width="140" height="140" alt="item">
-                </div>
-            </div>
-        </div>
-        <!-- End section-service -->
-
-        <!-- section-testimonial-->
-        <div id="testimonial" class="section-testimonial style-1 section spacing-5 sw-layout">
-            <div class="heading-section mb_43 d-flex align-items-end justify-content-between">
-                <div>
-                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
-                        testimonials
-                    </div>
-                    <h3 class="text_white fw-5  split-text effect-blur-fade">Trusted By Clients</h3>
-                </div>
-                <div class="wrap-sw-button d-flex gap_12 ">
-                    <div class="sw-button nav-prev-layout">
-                        <i class="icon-CaretLeft"></i>
-                    </div>
-                    <div class="sw-button nav-next-layout ">
-                        <i class="icon-CaretRight"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1"
-                data-space-lg="12" data-space-md="12" data-space="12">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testimonial-item area-effect">
-                            <div class="icon">
-                                <i class="icon-quote"></i>
-                            </div>
-                            <p class="text-body-2 text_white mb_21">ZenG delivered exceptional work. He’s
-                                professional, fast, and extremely easy to work with. I’d definitely hire him
-                                again for future projects!"</p>
-                            <div class="athor">
-                                <h5 class="name text_white mb_4 font-4"> <a href="#" class="link">Lincoln
-                                        Press</a>
-                                </h5>
-                                <span class="text-label text-uppercase text_primary-color font-3">CEO
-                                    Themesfalt</span>
-                            </div>
-                            <div class="item-shape spotlight">
-                                <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                    alt="item">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-item area-effect">
-                            <div class="icon">
-                                <i class="icon-quote"></i>
-                            </div>
-                            <p class="text-body-2 text_white mb_21">"ZenG managed our project with impressive
-                                efficiency and clarity. Deadlines were met, communication was smooth, and the
-                                outcome was exactly what we hoped for."</p>
-                            <div class="athor">
-                                <h5 class="name text_white mb_4 font-4"> <a href="#" class="link">Cheyenne
-                                        Mango</a>
-                                </h5>
-                                <span class="text-label text-uppercase text_primary-color font-3">CEO
-                                    Themesfalt</span>
-                            </div>
-                            <div class="item-shape spotlight">
-                                <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                    alt="item">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-item area-effect">
-                            <div class="icon">
-                                <i class="icon-quote"></i>
-                            </div>
-                            <p class="text-body-2 text_white mb_21">"ZenG managed our project with impressive
-                                efficiency and clarity. Deadlines were met, communication was smooth, and the
-                                outcome was exactly what we hoped for."</p>
-                            <div class="athor">
-                                <h5 class="name text_white mb_4 font-4"> <a href="#" class="link">Cheyenne
-                                        Mango</a>
-                                </h5>
-                                <span class="text-label text-uppercase text_primary-color font-3">CEO
-                                    Themesfalt</span>
-                            </div>
-                            <div class="item-shape spotlight">
-                                <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                    alt="item">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- End section-testimonial -->
-
-        <!-- section-pricing-->
-        <div id="pricing" class="section-pricing flat-animate-tab spacing-5 section">
-            <div class="heading-section mb_42">
-                <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
-                    Pricing
-                </div>
-                <h3 class="text_white fw-5  split-text effect-blur-fade">My Pricing</h3>
-            </div>
-            <div class="tab-slide  mb_32">
-                <ul class="menu-tab d-flex align-items-center" role="tablist">
-                    <li class="item-slide-effect"></li>
-                    <li class="nav-tab-item active" role="presentation">
-                        <a href="#standard-plan" class="text-button tab-link fw-6 active font-3"
-                            data-bs-toggle="tab">Standard Plan</a>
-                    </li>
-                    <li class="nav-tab-item" role="presentation">
-                        <a href="#premium-plan" class="text-button tab-link fw-6 font-3" data-bs-toggle="tab">Premium
-                            Plan</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane active show" id="standard-plan" role="tabpanel">
-                    <div class="pricing-item style-1 bs-light-mode area-effect">
-                        <h4 class="title">Standard <br>
-                            Plan</h4>
-                        <ul class="list-check d-grid gap_8">
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>60 keywords</li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>6,000 monthly
-                                website visitors</li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>8 blogs / month
-                            </li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>10 quality
-                                backlinks / month</li>
-                        </ul>
-                        <div class="wrap-pricing">
-                            <h3 class="text_white d-flex align-items-center gap_4 mb_20">$29 <span
-                                    class="text-caption-1 text-caption-1 text_muted-color">/per
-                                    hour</span>
-                            </h3>
-                            <a href="#contact" class="tf-btn style-1 animate-hover-btn">
-                                <span>
-                                    Get Started !
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="premium-plan" role="tabpanel">
-                    <div class="pricing-item style-1 bs-light-mode area-effect">
-                        <h4 class="title">Premium
-                            Plan</h4>
-                        <ul class="list-check d-grid gap_8">
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>60 keywords</li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>6,000 monthly
-                                website visitors</li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>8 blogs / month
-                            </li>
-                            <li class="text-body-1 text_white font-3 d-flex align-items-center gap_8"><i
-                                    class="icon-check"></i>10 quality
-                                backlinks / month</li>
-                        </ul>
-                        <div class="wrap-pricing">
-                            <h3 class="text_white d-flex align-items-center gap_4 mb_20">$39 <span
-                                    class="text-caption-1 text-caption-1 text_muted-color">/per
-                                    hour</span>
-                            </h3>
-                            <a href="#contact" class="tf-btn style-1 animate-hover-btn">
-                                <span>
-                                    Get Started !
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item-shape spotlight">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End section-pricing -->
-
-        <!-- section-partner-->
-        <div id="partners" class="section-partner style-2 section spacing-5">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="heading-section">
-                        <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_32">
-                            Partner
-                        </div>
-                        <h3 class="text_white fw-5  split-text effect-blur-fade">Trusted By 100+ Brands
-                            Worldwide</h3>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="swiper tf-sw-partner wrap-partner position-2" data-preview="8" data-tablet="8"
-                        data-mobile-sm="6" data-mobile="4" data-space="15" data-space-md="30" data-space-lg="30">
-                        <div class="swiper-wrapper ">
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-1 sz-100 scrolling-effect effectZoomIn"
-                                    data-delay="0.3">
-                                    <img src="images/logo/partner-1.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-2 sz-80">
-                                    <img src="images/logo/partner-3.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-3 sz-80">
-                                    <img src="images/logo/partner-2.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-4 sz-60">
-                                    <img src="images/logo/partner-5.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-5 sz-60">
-                                    <img src="images/logo/partner-8.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-6 sz-100">
-                                    <img src="images/logo/partner-6.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-7 sz-200 scrolling-effect effectZoomIn"
-                                    data-delay="0.4">
-                                    <img src="images/logo/partner-9.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-8 sz-160 scrolling-effect effectZoomIn"
-                                    data-delay="0.5">
-                                    <img src="images/logo/partner-4.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-9 sz-120 scrolling-effect effectZoomIn"
-                                    data-delay="0.6">
-                                    <img src="images/logo/partner-7.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-10 sz-120 scrolling-effect effectZoomIn"
-                                    data-delay="0.7">
-                                    <img src="images/logo/partner-7.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-11 sz-100">
-                                    <img src="images/logo/partner-6.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#" class="partner-item item-12 sz-80">
-                                    <img src="images/logo/partner-3.png" alt="partner">
-                                    <div class="item-shape">
-                                        <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                            alt="item">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End section-partner -->
-
-        <!-- section-contact-->
-        <div id="contact" class="section-contact style-1 section spacing-6">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="heading-section mb_44">
-                        <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_33">
-                            Contact
-                        </div>
-                        <div class="title mb_40">
-                            <h3 class="text_white  fw-5 animationtext clip ">Lets <span
-                                    class="tf-text s1 cd-words-wrapper text_primary-color">
-                                    <span class="item-text is-visible">Design</span>
-                                    <span class="item-text is-hidden">Create</span>
-                                    <span class="item-text is-hidden">Craft</span>
-                                </span>
-                                Incredible
-                            </h3>
-                            <h3 class="text_white title fw-5 "> Work Together</h3>
-                        </div>
-                        <div class="heading-title">
-                            <div class="mb_12">
-                                <h4 class="text_white fw-4 mb_4"><a href="#"
-                                        class="hover-underline-link link">themesflat@gmail.com</a></h4>
-                                <p class="text-caption-2 text_secondary-color font-3">Based in San Francisco,
-                                    CA
-                                </p>
-                            </div>
-                            <ul class="list-icon d-flex">
-                                <li><a href="#" class="icon-LinkedIn"></a></li>
-                                <li> <a href="#" class="icon-GitHub"></a></li>
-                                <li><a href="#" class="icon-X"></a></li>
-                                <li><a href="#" class="icon-dribbble"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <form class="form-contact bs-light-mode">
-                        <div class="d-grid gap_24  mb_24">
-                            <fieldset class="">
-                                <input id="name" type="text" placeholder="Your name" name="name"
-                                    tabindex="2" aria-required="true" required="">
-                            </fieldset>
-                            <fieldset class="">
-                                <input class="" type="email" placeholder="Your email" name="email"
-                                    tabindex="2" value="" id="email" aria-required="true"
-                                    required="">
-                            </fieldset>
-                            <fieldset>
-                                <textarea id="message" class="" rows="4" placeholder="Your Message..." tabindex="2"
-                                    aria-required="true" required=""></textarea>
-                            </fieldset>
-                        </div>
-
-                        <ul class="list-tag">
-                            <li><a href="#" class="text_white text-body-1 font-3">
-                                    &lt; $1,000</a>
-                            </li>
-                            <li><a href="#" class="text_white text-body-1 font-3">$1,000 - $5,000</a>
-                            </li>
-                            <li><a href="#" class="text_white text-body-1 font-3">$5,000 - $10,000</a>
-                            </li>
-                            <li><a href="#" class="text_white text-body-1 font-3">$10,000 - 20,000</a>
-                            </li>
-                            <li><a href="#" class="text_white text-body-1 font-3">&lt; $20,000</a></li>
-                        </ul>
-
-                        <div class="button-submit">
-                            <button class="tf-btn style-1 animate-hover-btn" type="submit">
-                                <span>
-                                    Get Started !
-                                </span>
-                            </button>
-                        </div>
-                        <div class="item-shape">
-                            <img src="images/item/small-comet.webp" loading="lazy" decoding="async" alt="item">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <p class="font-3 text_secondary-color text-center">© 2025 ZenG. All Rights Reserved.</p>
-        </div>
-        <!-- End section-contact -->
 
     </div>
 

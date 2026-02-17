@@ -1270,12 +1270,12 @@ a:focus {
 }
 
 .spacing-5 {
-    padding-top: 100px;
+    padding-top: 35px;
 }
 
 @media (max-width: 767px) {
     .spacing-5 {
-        padding-top: 50px;
+        padding-top: 30px;
     }
 }
 
@@ -1760,7 +1760,7 @@ a:focus {
  ------------------------------------------------------------------------------ */
 /*--------- Abstracts variable ---------- */
 .tab-slide {
-    max-width: 335px;
+    max-width: 735px;
     padding: 4px;
     background: var(--Bg-linear-2);
     border-radius: 52px;
