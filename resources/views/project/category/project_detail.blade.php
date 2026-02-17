@@ -9,7 +9,7 @@
 
         <div class=" mx-auto rounded-2"><br><br>
             <nav aria-label="breadcrumb mt-3 text-white">
-                <ol class="breadcrumb">
+                <div class="breadcrumb">
 
                     <li class="breadcrumb-item">
                         <a href="/">Accueil</a>
@@ -29,7 +29,7 @@
                         {{ $project->name }}
                     </li>
 
-                </ol>
+                </div>
             </nav>
             <br>
             <div class="p-1">
@@ -51,8 +51,8 @@
                                             @endphp
                                             <div class="d-flex p-tool overflow-hidden">
                                                 @foreach ($project_tools as $tool)
-                                                    <div class="item me-1">
-                                                        <img src="{{ asset($tool) }}" width="25px" height="25px"
+                                                    <div class="item me-2">
+                                                        <img src="{{ asset($tool) }}" width="22px" height="22px"
                                                             alt="portofolio-skill">
                                                     </div>
                                                 @endforeach

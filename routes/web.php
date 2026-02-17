@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 // HomePage Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/project/list', [HomeController::class, 'ProjectList']);
+
 Route::get('/project/{id}/detail', [HomeController::class, 'ProjectDetail']);
 
 Route::get('/category/{id}/{slug}', [HomeController::class, 'ProjectCategory']);

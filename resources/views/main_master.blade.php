@@ -27,6 +27,14 @@
     <!-- Icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/icons/icomoon/style.css') }}">
     <style>
+        body>.skiptranslate {
+            display: none;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
         .toast {
             background-color: #030303 !important;
             font-size: 15px !important;
@@ -100,8 +108,8 @@
                         <li class="text-menu text_white">
                             <a href="#portfolio"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                                <span class="text" data-splitting>Portfolio</span>
-                                <span class="text" data-splitting>Portfolio</span>
+                                <span class="text" data-splitting>Projets</span>
+                                <span class="text" data-splitting>Projets</span>
                             </a>
                         </li>
 
@@ -111,6 +119,28 @@
                                 <span class="text" data-splitting>Contact</span>
                                 <span class="text" data-splitting>Contact</span>
                             </a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-light dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    🌐 Langue
+                                </button>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="?lang=fr">
+                                            🇫🇷 Français
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="?lang=en">
+                                            🇬🇧 English
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </li>
                     </ul>
                     <div class="d-flex gap_12 align-items-center">
@@ -134,7 +164,8 @@
                         </a>
                     </li>
                     <li class="text-menu text_white">
-                        <a href="#about" class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
+                        <a href="#about"
+                            class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                             <span class="text" data-splitting>A propos</span>
                             <span class="text" data-splitting>A propos</span>
                         </a>
@@ -156,8 +187,8 @@
                     <li class="text-menu text_white">
                         <a href="#portfolio"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>Portfolio</span>
-                            <span class="text" data-splitting>Portfolio</span>
+                            <span class="text" data-splitting>Projets</span>
+                            <span class="text" data-splitting>Projets</span>
                         </a>
                     </li>
                     <li class="text-menu text_white">
@@ -226,6 +257,23 @@
                                 <span class="text" data-splitting>Contact</span>
                             </a>
                         </li>
+                        <li>
+                            <div class="dropdown">
+                                <button style="font-size: 14px" class="btn btn-outline-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    🌐 Langue
+                                </button>
+
+                                <ul class="dropdown-menu cursor-pointer" style="font-size: 13px">
+                                    <li data-lang="fr" class="dropdown-item mb-2 cursor-pointer">
+                                        🇫🇷 Français
+                                    </li>
+                                    <li data-lang="en" class="dropdown-item cursor-pointer">
+                                        🇬🇧 English
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                     <div class="d-flex gap_12 align-items-center">
                         <a target="_blank"
@@ -278,6 +326,23 @@
                             <span class="text" data-splitting>CV</span>
                         </a>
                     </li>
+                    <li>
+                        <div class="dropdown">
+                            <button style="font-size: 14px" class="btn btn-outline-light dropdown-toggle"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                🌐 Langue
+                            </button>
+
+                            <ul class="dropdown-menu cursor-pointer" style="font-size: 13px">
+                                <li data-lang="fr" class="dropdown-item mb-2 cursor-pointer">
+                                    🇫🇷 Français
+                                </li>
+                                <li data-lang="en" class="dropdown-item cursor-pointer">
+                                    🇬🇧 English
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -309,6 +374,77 @@
     <script src="{{ asset('/frontend/js/jquery.fancybox.js') }}"></script>
     <script src="{{ asset('/frontend/js/main.js') }}"></script>
     <!-- /Javascript -->
+    <script>
+        const defaultLang = "fr"; // langue de base du site
+
+        // Charger Google Translate
+        function loadGoogleTranslate() {
+            const script = document.createElement("script");
+            script.src = "//translate.google.com/translate_a/element.js?cb=initGoogleTranslate";
+            document.head.appendChild(script);
+        }
+
+        // Initialiser le widget
+        function initGoogleTranslate() {
+            new google.translate.TranslateElement({
+                pageLanguage: defaultLang,
+                includedLanguages: "fr,en",
+                autoDisplay: false
+            }, "google_translate_element");
+        }
+
+        // Définir cookie Google Translate
+        function setLanguage(lang) {
+            const value = `/fr/${lang}`;
+
+            // Définir le cookie standard
+            document.cookie = `googtrans=${value}; path=/`;
+
+            // Facultatif : ajouter le cookie avec le domaine (utile si sous-domaine)
+            const hostname = window.location.hostname;
+
+            // S'assurer que ce n’est pas localhost
+            if (!hostname.includes("localhost") && hostname.split('.').length >= 2) {
+                const rootDomain = '.' + hostname.split('.').slice(-2).join('.');
+                document.cookie = `googtrans=${value}; path=/; domain=${rootDomain}`;
+            }
+
+            location.reload();
+        }
+
+        // Écoute sur les boutons
+        $(document).ready(function() {
+            loadGoogleTranslate();
+
+            $("[data-lang]").on("click", function() {
+                const selectedLang = $(this).attr("data-lang");
+                setLanguage(selectedLang);
+            });
+        });
+    </script>
+
+    <script>
+        // Supprime les éléments dans les iframes Google après chargement
+        function hideGoogleTranslateBar() {
+            const interval = setInterval(() => {
+                const bannerFrame = document.querySelector("iframe.goog-te-banner-frame");
+                const menuFrame = document.querySelector("iframe.goog-te-menu-frame");
+
+                if (bannerFrame) bannerFrame.style.display = "none";
+                if (menuFrame) menuFrame.style.display = "none";
+
+                // Supprime le margin ajouté au body par Google
+                if (document.body.style.top) {
+                    document.body.style.top = "0px";
+                }
+            }, 500); // Réessaye toutes les 500ms
+
+            // Stoppe l'intervalle après 10 secondes
+            setTimeout(() => clearInterval(interval), 10000);
+        }
+
+        document.addEventListener("DOMContentLoaded", hideGoogleTranslateBar);
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>

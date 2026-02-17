@@ -2,16 +2,19 @@
 
 .main-content {
     padding-top: 50px;
+
     @include res(xxl, min) {
         margin-right: 77px;
     }
+
     @include res(md) {
         padding-top: 25px;
     }
+
     &.style-fullwidth {
         @include res(md, min) {
             margin-right: 0;
-            padding-top: 100px;
+            padding-top: 50px;
         }
     }
 }
@@ -19,6 +22,7 @@
 .heading-section {
     @include res(md) {
         margin-bottom: 24px;
+
         .tag-heading {
             margin-bottom: 12px;
         }
@@ -27,6 +31,7 @@
 
 .main-content-2 {
     padding-top: 100px;
+
     @include res(xxl, min) {
         margin-right: 35px;
     }
@@ -36,6 +41,7 @@
     position: relative;
     max-width: max-content;
     padding: 8px;
+
     .shape {
         span {
             position: absolute;
@@ -46,18 +52,22 @@
             border: 2px solid var(--Primary);
             z-index: 1;
         }
+
         .shape-1 {
             left: -7px;
             top: -7px;
         }
+
         .shape-2 {
             right: -4px;
             top: -7px;
         }
+
         .shape-3 {
             right: -5px;
             bottom: -5px;
         }
+
         .shape-4 {
             left: -7px;
             bottom: -7px;
@@ -71,6 +81,7 @@
         position: absolute;
         left: 0;
     }
+
     .line-vertical {
         background-color: var(--Primary);
         width: 1px;
@@ -78,15 +89,19 @@
         position: absolute;
         top: 0;
     }
+
     .vertical-1 {
         right: 0;
     }
+
     .vertical-2 {
         left: 0;
     }
+
     .horizontal-1 {
         top: 0;
     }
+
     .horizontal-2 {
         bottom: 0;
     }
@@ -99,6 +114,7 @@
         right: 40px;
         bottom: 40px;
     }
+
     &.style-1 {
         .wrap-sw-button {
             position: unset;
@@ -111,16 +127,19 @@
         &:not(:last-child) {
             margin-bottom: 44px;
         }
+
         @include res(md) {
             &:not(:last-child) {
                 margin-bottom: 30px;
             }
         }
     }
+
     &.style-1 {
         .portfolio-item {
             margin-bottom: 0;
         }
+
         .tf-grid-layout {
             gap: 44px;
         }
@@ -133,8 +152,10 @@
             position: unset;
         }
     }
+
     &.style-1 {
         padding-top: 22px;
+
         @include res(lg, min) {
             .heading-section {
                 padding-top: 71px;
@@ -155,10 +176,12 @@
 .section-contact {
     &.style-1 {
         padding-bottom: 40px;
+
         @include res(lg, min) {
             .heading-section {
                 padding-top: 112px;
             }
+
             .form-contact {
                 margin-left: 35px;
                 padding: 40px 60px;

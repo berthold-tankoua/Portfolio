@@ -7,199 +7,20 @@
 
 <div class="main-content style-fullwidth section-onepage">
 
-    <div class="tf-container w-6">
+    <div class="tf-container">
 
-        <div class="wrap-section">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="user-bar style-1 text-center">
-                        <div class="box-author mb_12">
-                            <div class="img-style mb_16">
-                                <img decoding="async" loading="lazy" src="{{ asset($about->about_img) }}" width="314"
-                                    height="314" alt="feature post">
-                            </div>
-                            <div class="info">
-                                <div class="name font-2 text_white mb_8">Brecht Tankoua</div>
-                                <div
-                                    class="text-label text-uppercase mt-1 fw-6 text_primary-color font-3 mb_16 letter-spacing-1">
-                                    Développeur Web & IA</div>
-                                <a href="mailto:brtankoua@gmail.com"
-                                    class="hover-underline-link text_white text-body-2 mb_4">brtankoua@gmail.com</a>
-                                <p class="text-caption-2 text_secondary-color font-3">
-                                    {{ $about->address }}
-                                </p>
-                            </div>
-                        </div>
-                        <ul class="list-icon d-flex justify-content-center">
-                            <li><a href="{{ $about->linkeldin_link }}" class="icon-LinkedIn"></a></li>
-                            <li> <a href="{{ $about->gitlab_link }}" class="icon-GitHub"></a></li>
-                            <li><a href="{{ $about->facebook_link }}" class="icon-X"></a></li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <section class="resume-lang-section resume-section">
-                        <h1 class="h5 text-uppercase py-2 py-lg-3 py-3"><i class="bi bi-translate me-2"></i>Langues</h1>
-                        <ul class="list-unstyled resume-lang-list">
-                            <li class="mb-4">
-                                <div class="resume-skill-name text-capitalize">Francais</div>
-                                <div class="progress resume-progress mt-2" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar resume-progress-bar" style="width: 85%"></div>
-                                </div><!--//resume-level-indicator-->
-                            </li>
-                            <li class="mb-2">
-                                <div class="resume-skill-name">Anglais</div>
-                                <div class="progress resume-progress mt-2" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar resume-progress-bar" style="width: 70%"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="col-lg-8">
-                    <!-- section-about -->
-                    <div id="about" class="section-about style-1 section ">
-                        <div class="heading-section mb_45">
-                            <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_32">
-                                A Propos
-                            </div>
-                            <div class="title-border-shape">
-                                <h4 class="animationtext clip "> Salut, je suis <span
-                                        class="tf-text s1 cd-words-wrapper text_primary-color">
-                                        <span class="item-text is-visible">Développeur Web</span>
-                                        <span class="item-text is-hidden">Concepteur d'agent IA</span>
-                                        <span class="item-text is-hidden">Marketeur Digital Meta</span>
-                                    </span> </h4>
-                                <div class="shape">
-                                    <span class="shape-1"></span>
-                                    <span class="shape-2"></span>
-                                    <span class="shape-3"></span>
-                                    <span class="shape-4"></span>
-                                </div>
-                                <div class="line">
-                                    <span class="line-horizontal horizontal-1"></span>
-                                    <span class="line-horizontal horizontal-2"></span>
-                                    <span class="line-vertical vertical-1"></span>
-                                    <span class="line-vertical vertical-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <h1 class="title mb_16 split-text effect-blur-fade h4">
-                            Backend | Frontend | Agent IA | SEO | Devops
-                        </h1>
-                        <div class="text_muted-color font-3 mb_43 split-text split-lines-transform">
-                            {!! $about->desc1 !!}
-                        </div>
-                        <div class="wrap-counter tf-grid-layout md-col-3">
-                            <div class="counter-item bs-light-mode">
-                                <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="{{ $about->exp_count }}">
-                                        {{ $about->exp_count }}
-                                    </div>
-                                    <span class="sub">+</span>
-                                </div>
-                                <p class="text-body-1 text_muted-color font-3">D'expérience en IT</p>
-
-                            </div>
-                            <div class="counter-item bs-light-mode">
-                                <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="{{ $about->proj_count }}">
-                                        {{ $about->proj_count }}</div>
-                                    <span class="sub">+</span>
-                                </div>
-                                <p class="text-body-1 text_muted-color font-3">Clients Satisfaits</p>
-
-                            </div>
-                            <div class="counter-item bs-light-mode">
-                                <div class="counter-number h2 text_white mb_7">
-                                    <div class="odometer" data-number="{{ $about->hcust_count }}">
-                                        {{ $about->hcust_count }}</div>
-                                    <span class="sub">+</span>
-                                </div>
-                                <p class="text-body-1 text_muted-color font-3">Projets Terminés</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End section-about -->
-                    <div class="counter-item bs-light-mode  mt-5 w-100 ">
-                        <div class="info">
-                            <div class="name font-2 text_white mb-4">Compétences</div>
-                        </div>
-                        <div class="list-icons d-flex  cursor-pointer "
-                            style="overflow-x: scroll;width: 100%; padding-bottom: 10px;">
-                            <div title="PHP"><img src="{{ asset('upload/skills/1794217278408413.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
-                            </div>
-                            <div title="Laravel"><img src="{{ asset('upload/skills/1794217189325281.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
-                            </div>
-                            <div title="Bootstrap"><img src="{{ asset('upload/skills/1794217322879346.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
-                            </div>
-                            <div title="Vuejs"><img src="{{ asset('upload/skills/1794217805784333.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="IA"><img src="{{ asset('upload/skills/1846653782352044.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="PWA"><img src="{{ asset('upload/skills/1821402864701050.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Javascript"><img src="{{ asset('upload/skills/1794217521134374.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Css"><img src="{{ asset('upload/skills/1794217351642580.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="HTML"><img src="{{ asset('upload/skills/1794217464578210.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Aws"><img src="{{ asset('upload/skills/1857258320482256.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Git"><img src="{{ asset('upload/skills/1857258344083463.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="MySql"><img src="{{ asset('upload/skills/1794217565856740.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Api"><img src="{{ asset('upload/skills/1794217546197747.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Linux"><img src="{{ asset('upload/skills/1857258827130950.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Meta"><img src="{{ asset('upload/skills/1794217726185141.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                            <div title="Test unitaire"><img src="{{ asset('upload/skills/1794217845985882.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- section-portfolio-->
         <div class="container">
-            <div id="portfolio" class="section-portfolio style-1 spacing-5 section" s>
+            <div id="portfolio" class="section-portfolio style-1 section">
                 <div class="heading-section mb_42">
-                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
-                        Portfolio
-                    </div>
-                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
+                    <h1 class="text_white fw-5  split-text effect-blur-fade h4">Mes Projets </h1>
                 </div>
                 <div class="tab-slide  mb_32">
                     <ul class="menu-tab d-flex align-items-center" role="tablist">
                         <li class="item-slide-effect"></li>
                         <li class="nav-tab-item active" role="presentation">
-                            <a href="#all" class="text-button tab-link fw-6 active font-3"
-                                data-bs-toggle="tab">Mes Projets</a>
+                            <a href="#all" class="text-button tab-link fw-6 active font-3" data-bs-toggle="tab">Mes
+                                Projets</a>
                         </li>
                         @foreach ($categories as $category)
                             <li class="nav-tab-item" role="presentation">
@@ -311,79 +132,13 @@
             </div>
             <div class="section-contact style-1 section spacing-6">
                 <div class="button-submit" style="display: flex; justify-content: center;">
-                    <a href="{{ url('project/list') }}" class="tf-btn style-1 animate-hover-btn">
+                    <a href="" class="tf-btn style-1 animate-hover-btn">
                         <span>
                             Afficher tous les projets !
                         </span>
                     </a>
                 </div>
             </div>
-            <!-- section-resume-->
-            <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
-                <div class="heading-section mb_47">
-                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
-                        Education
-                    </div>
-                    <h3 class="text_white fw-5 split-text effect-blur-fade">Education & Formation</h3>
-                </div>
-                <div class="effect-line-hover">
-                    <div class="wrap-education-item area-effect  scrolling-effect effectTop">
-                        <span class="point"></span>
-                        <div class="education-item">
-                            <div class="content">
-                                <h5 class="font-4 mb_4"><a href="#contact" class="link">Licence genie logiciel</a>
-                                </h5>
-                                <span class="text-body-1 font-3">Universite de Yaounde 1</span>
-                            </div>
-                            <div class="date text-caption-1 text_white font-3">
-                                2017 - 2022
-                            </div>
-                        </div>
-                    </div>
-                    @foreach ($formations as $item)
-                        <div class="wrap-education-item area-effect  scrolling-effect effectTop">
-                            <span class="point"></span>
-                            <div class="education-item">
-                                <div class="content">
-                                    <h5 class="font-4 mb_4"><a href="#contact"
-                                            class="link">{{ $item->name }}</a>
-                                    </h5>
-                                    <span class="text-body-1 font-3">{{ $item->place }}</span>
-                                </div>
-                                <div class="date text-caption-1 text_white font-3">
-                                    {{ $item->duration }}
-                                </div>
-
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <!-- End section-resume -->
-            <!-- section-service -->
-            <div id="services" class="section-service section spacing-5">
-                <div class="heading-section mb_43">
-                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_33">
-                        Services
-                    </div>
-                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes services</h3>
-                </div>
-                @foreach ($services as $key => $item)
-                    <div class="service-item area-effect scrolling-effect effectBottom">
-                        <div class="content-inner d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center content">
-                                <span class="number text-label text_muted-color font-3">0{{ $key + 1 }}/</span>
-                                <h5 class="text_white font-4"><a href="#contact"
-                                        class="link">{{ $item->name }}</a>
-                                </h5>
-                            </div>
-                            <a href="#contact" class="btn-arrow"><i class="icon-ArrowRight"></i></a>
-
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <!-- End section-service -->
 
             <!-- section-testimonial-->
             <div id="testimonial" class="section-testimonial style-1 section spacing-5 sw-layout">
@@ -403,8 +158,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1"
-                    data-space-lg="12" data-space-md="12" data-space="12">
+                <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1" data-space-lg="12"
+                    data-space-md="12" data-space="12">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="testimonial-item area-effect">

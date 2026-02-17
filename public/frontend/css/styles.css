@@ -4659,7 +4659,7 @@ ANIMATION AREA CSS
 @media (min-width: 768px) {
     .main-content.style-fullwidth {
         margin-right: 0;
-        padding-top: 100px;
+        padding-top: 50px;
     }
 }
 

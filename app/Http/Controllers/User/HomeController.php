@@ -30,6 +30,19 @@ class HomeController extends Controller
             ->get();
         return view('project.home.welcome', compact('about', 'services', 'projects', 'formations', 'skills', 'categories'));
     } //End Method
+
+    public function ProjectList()
+    {
+        $services = Service::latest()->get();
+        $about = About::where('id', 1)->first();
+        $projects = Project::orderBy('top', 'DESC')->get();
+        $formations = Formation::latest()->get();
+        $categories = Category::whereIn('id', [1, 2, 5])
+            ->orderBy('others', 'ASC')
+            ->get();
+        return view('project.category.list', compact('about', 'projects', 'formations', 'categories', 'services'));
+    }
+
     public function ProjectCategory($id)
     {
         $category = Category::where('id', $id)->first();
@@ -43,7 +56,7 @@ class HomeController extends Controller
         } elseif ($id == 3) {
             return view('frontend.category.infographie', compact('services', 'projects', 'formations', 'skills', 'category'));
         } else {
-            return view('category', compact('services', 'projects', 'formations', 'skills', 'category'));
+            return view('project.category.category', compact('services', 'projects', 'formations', 'skills', 'category'));
         }
     } //End Method
 
