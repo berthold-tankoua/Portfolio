@@ -207,22 +207,19 @@
                                     data-bs-toggle="tab">{{ $category->name }}</a>
                             </li>
                         @endforeach
-
-
                     </ul>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active show" id="all" role="tabpanel">
                         <div class="row">
                             @foreach ($projects as $project)
-                                <article class="col-md-6 mb-4">
+                                <article class="col-md-6 mb-4 mb-4 mt-4">
                                     <div class="p-2 mb-2 text-white">
-                                        <div class="d-flex flex-wrap align-items-center mb-3">
+                                        <div class="d-flex flex-wrap align-items-center mb-1">
                                             <a href="{{ url('project/' . $project->id . '/detail') }}"
                                                 class="mb-2 me-4 h6">{{ $project->name }} </a>
                                             @php
-                                                $tools = $project->tool_path;
-                                                $project_tools = explode(',', $tools);
+                                                $project_tools = explode(',', $project->tool_path);
                                             @endphp
                                             <div class="d-flex p-tool overflow-hidden mb-2">
                                                 @foreach ($project_tools as $key => $tool)
@@ -242,7 +239,7 @@
                                             <div class="text-white mbl-date">{{ $project->start_date }} |
                                                 {{ $project->end_date }}</div>
                                             <a href="{{ $project->url }}"
-                                                class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                                                class="mbldis resume-company-name">{{ $project->url }}</a>
                                         </div>
                                     </div><!--//resume-timeline-item-header-->
 
@@ -267,9 +264,9 @@
                             @endphp
                             <div class="row">
                                 @foreach ($category_projects as $project)
-                                    <article class="col-md-6 mb-4">
+                                    <article class="col-md-6 mb-4 mt-2">
                                         <div class="p-2 mb-2 text-white">
-                                            <div class="d-flex flex-wrap align-items-center mb-3">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
                                                 <a href="{{ url('project/' . $project->id . '/detail') }}"
                                                     class="mb-2 me-4 h6">{{ $project->name }} </a>
                                                 @php
@@ -635,10 +632,23 @@
                         </form>
                     </div>
                 </div>
-                <p class="font-3 text_secondary-color text-center">© 2025 Brecht Tankoua. All Rights Reserved.</p>
             </div>
             <!-- End section-contact -->
-
+            <!-- section-contact-->
+            <div id="resume" class="section-contact style-1 section spacing-6">
+                <div class="col-md-12">
+                    <div class="button-submit" style="display: flex; justify-content: center;">
+                        <a href="https://drive.google.com/file/d/1ZxPwlSlxf8VEejr83onpOeiRqc6jWygf/view?usp=sharing"
+                            class="tf-btn style-1 animate-hover-btn">
+                            <span>
+                                Telecharger CV !
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End section-contact -->
+            <p class="font-3 text_secondary-color text-center">© 2025 Brecht Tankoua. All Rights Reserved.</p>
         </div>
         <!-- End section-portfolio -->
 

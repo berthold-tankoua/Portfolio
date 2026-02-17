@@ -20,31 +20,35 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
 <style>
-
     .toast {
-      background-color: #030303 !important;
-    }
-    .toast-info {
-      background-color: #3276b1 !important;
-    }
-    .toast-info2 {
-      background-color: #2f96b4 !important;
-    }
-    .toast-error {
-      background-color: #bd362f !important;
-    }
-    .toast-success {
-      background-color: #51a351 !important;
-    }
-    .toast-warning {
-      background-color: #f89406 !important;
+        background-color: #030303 !important;
     }
 
-  </style>
+    .toast-info {
+        background-color: #3276b1 !important;
+    }
+
+    .toast-info2 {
+        background-color: #2f96b4 !important;
+    }
+
+    .toast-error {
+        background-color: #bd362f !important;
+    }
+
+    .toast-success {
+        background-color: #51a351 !important;
+    }
+
+    .toast-warning {
+        background-color: #f89406 !important;
+    }
+</style>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -106,7 +110,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('user.logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('user.logout') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -116,33 +120,30 @@
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+        @if (Session::has('message'))
 
-        @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ")
+                    break;
 
-          var type = "{{ Session::get('alert-type', 'info') }}";
-          switch (type) {
-            case 'info':
-              toastr.info(" {{ Session::get('message') }} ")
-              break;
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ")
+                    break;
 
-            case 'success':
-              toastr.success(" {{ Session::get('message') }} ")
-              break;
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ")
+                    break;
 
-            case 'warning':
-              toastr.warning(" {{ Session::get('message') }} ")
-              break;
-
-            case 'error':
-              toastr.error(" {{ Session::get('message') }} ")
-              break;
-          }
-
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ")
+                    break;
+            }
         @endif
-
-      </script>
+    </script>
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
@@ -155,14 +156,14 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
-        <!-- Page level plugins -->
-        <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Page level plugins -->
+    <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
-        <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
-        <script src="{{ asset('backend/bootstrap-tagsinput/tagsinput.js') }}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('backend/bootstrap-tagsinput/tagsinput.js') }}"></script>
 </body>
 
 </html>

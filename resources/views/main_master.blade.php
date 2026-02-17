@@ -23,10 +23,35 @@
 
     <!-- Font -->
     <link rel="stylesheet" href="{{ asset('/frontend/font/fonts.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <!-- Icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/icons/icomoon/style.css') }}">
+    <style>
+        .toast {
+            background-color: #030303 !important;
+            font-size: 15px !important;
+        }
 
+        .toast-info {
+            background-color: #3276b1 !important;
+        }
+
+        .toast-info2 {
+            background-color: #2f96b4 !important;
+        }
+
+        .toast-error {
+            background-color: #bd362f !important;
+        }
+
+        .toast-success {
+            background-color: #51a351 !important;
+        }
+
+        .toast-warning {
+            background-color: #f89406 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,6 +78,11 @@
                     </div>
                     <ul class="nav-menu style-1 lg-hide">
                         <li class="text-menu text_white">
+                            <a href="{{ url('/') }}" class=" text-button font-3 fw-6">
+                                <span class="text" data-splitting>Accueil</span>
+                            </a>
+                        </li>
+                        <li class="text-menu text_white">
                             <a href="#about"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                                 <span class="text" data-splitting>A propos</span>
@@ -66,13 +96,7 @@
                                 <span class="text" data-splitting>Education</span>
                             </a>
                         </li>
-                        <li class="text-menu text_white">
-                            <a href="#services"
-                                class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                                <span class="text" data-splitting>Services</span>
-                                <span class="text" data-splitting>Services</span>
-                            </a>
-                        </li>
+
                         <li class="text-menu text_white">
                             <a href="#portfolio"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
@@ -80,15 +104,9 @@
                                 <span class="text" data-splitting>Portfolio</span>
                             </a>
                         </li>
+
                         <li class="text-menu text_white">
                             <a href="#pricing"
-                                class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                                <span class="text" data-splitting>Services</span>
-                                <span class="text" data-splitting>Services</span>
-                            </a>
-                        </li>
-                        <li class="text-menu text_white">
-                            <a href="#contact"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                                 <span class="text" data-splitting>Contact</span>
                                 <span class="text" data-splitting>Contact</span>
@@ -110,6 +128,11 @@
             </div>
             <div class="popup-menu-mobile" id="menu-1">
                 <ul class="nav-menu style-3 ">
+                    <li class="text-menu text_white">
+                        <a href="{{ url('/') }}" class=" text-button font-3 fw-6">
+                            <span class="text" data-splitting>Accueil</span>
+                        </a>
+                    </li>
                     <li class="text-menu text_white">
                         <a href="#about" class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                             <span class="text" data-splitting>A propos</span>
@@ -140,15 +163,15 @@
                     <li class="text-menu text_white">
                         <a href="#pricing"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>Services</span>
-                            <span class="text" data-splitting>Services</span>
+                            <span class="text" data-splitting>Contact</span>
+                            <span class="text" data-splitting>Contact</span>
                         </a>
                     </li>
                     <li class="text-menu text_white">
-                        <a href="#contact"
+                        <a href="#resume"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>Contact</span>
-                            <span class="text" data-splitting>Contact</span>
+                            <span class="text" data-splitting>CV</span>
+                            <span class="text" data-splitting>CV</span>
                         </a>
                     </li>
                 </ul>
@@ -171,6 +194,11 @@
                     </div>
                     <ul class="nav-menu style-1 lg-hide">
                         <li class="text-menu text_white">
+                            <a href="{{ url('/') }}" class=" text-button font-3 fw-6">
+                                <span class="text" data-splitting>Accueil</span>
+                            </a>
+                        </li>
+                        <li class="text-menu text_white">
                             <a href="#about"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                                 <span class="text" data-splitting>A propos</span>
@@ -191,16 +219,8 @@
                                 <span class="text" data-splitting>Projets</span>
                             </a>
                         </li>
-
                         <li class="text-menu text_white">
                             <a href="#pricing"
-                                class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                                <span class="text" data-splitting>Services</span>
-                                <span class="text" data-splitting>Services</span>
-                            </a>
-                        </li>
-                        <li class="text-menu text_white">
-                            <a href="#contact"
                                 class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
                                 <span class="text" data-splitting>Contact</span>
                                 <span class="text" data-splitting>Contact</span>
@@ -216,12 +236,18 @@
                             </span>
                         </a>
                         <a class="menu-button show-menu-mobile  d-lg-none link-no-action" data-target="#menu-2"
-                            href="#"><i class="icon-CirclesFour"></i></a>
+                            href="https://drive.google.com/file/d/1ZxPwlSlxf8VEejr83onpOeiRqc6jWygf/view?usp=sharing"><i
+                                class="icon-CirclesFour"></i></a>
                     </div>
                 </div>
             </div>
             <div class="popup-menu-mobile" id="menu-2">
                 <ul class="nav-menu style-3 ">
+                    <li class="text-menu text_white">
+                        <a href="{{ url('/') }}" class=" text-button font-3 fw-6">
+                            <span class="text" data-splitting>Accueil</span>
+                        </a>
+                    </li>
                     <li class="text-menu text_white">
                         <a href="#about"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
@@ -229,13 +255,7 @@
                             <span class="text" data-splitting>A propos</span>
                         </a>
                     </li>
-                    <li class="text-menu text_white">
-                        <a href="#resume"
-                            class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>CV</span>
-                            <span class="text" data-splitting>CV</span>
-                        </a>
-                    </li>
+
                     <li class="text-menu text_white">
                         <a href="#portfolio"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
@@ -247,15 +267,15 @@
                     <li class="text-menu text_white">
                         <a href="#pricing"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>Services</span>
-                            <span class="text" data-splitting>Services</span>
+                            <span class="text" data-splitting>Contact</span>
+                            <span class="text" data-splitting>Contact</span>
                         </a>
                     </li>
                     <li class="text-menu text_white">
-                        <a href="#contact"
+                        <a href="#resume"
                             class="nav_link toggle splitting link link-no-action text-button font-3 fw-6">
-                            <span class="text" data-splitting>Contact</span>
-                            <span class="text" data-splitting>Contact</span>
+                            <span class="text" data-splitting>CV</span>
+                            <span class="text" data-splitting>CV</span>
                         </a>
                     </li>
                 </ul>
@@ -290,7 +310,30 @@
     <script src="{{ asset('/frontend/js/main.js') }}"></script>
     <!-- /Javascript -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (Session::has('message'))
 
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ")
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ")
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ")
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ")
+                    break;
+            }
+        @endif
+    </script>
 
 </body>
 

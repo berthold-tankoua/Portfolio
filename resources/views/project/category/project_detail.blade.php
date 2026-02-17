@@ -6,8 +6,9 @@
 @endsection
 <div class="main-content-wrapper">
     <div class="container">
-        <div class=" mx-auto rounded-2"><br>
-            <nav aria-label="breadcrumb mt-3">
+
+        <div class=" mx-auto rounded-2"><br><br>
+            <nav aria-label="breadcrumb mt-3 text-white">
                 <ol class="breadcrumb">
 
                     <li class="breadcrumb-item">
@@ -21,7 +22,7 @@
                     </li>
 
                     <li class="breadcrumb-item">
-                        <a href="#">Projet</a>
+                        <a href="#">projet</a>
                     </li>
 
                     <li class="breadcrumb-item text-white" aria-current="page">
