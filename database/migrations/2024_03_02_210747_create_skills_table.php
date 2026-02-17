@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('exp');
             $table->string('image');
-            $table->string('img_url');
             $table->string('certif')->nullable();
-            $table->string('certif_url')->nullable();
             $table->text('desc')->nullable();
             $table->timestamps();
         });

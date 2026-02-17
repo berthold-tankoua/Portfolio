@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger);
+//gsap.registerPlugin(ScrollTrigger);
 
 (function ($) {
     /* animation_text
@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
         if ($(".split-text").length > 0) {
             var st = $(".split-text");
             if (st.length === 0) return;
-            gsap.registerPlugin(SplitText, ScrollTrigger);
+            //gsap.registerPlugin(SplitText, ScrollTrigger);
             st.each(function (index, el) {
                 const $el = $(el);
                 const $target =

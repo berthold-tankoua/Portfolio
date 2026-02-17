@@ -35,8 +35,27 @@
                             <li> <a href="{{ $about->gitlab_link }}" class="icon-GitHub"></a></li>
                             <li><a href="{{ $about->facebook_link }}" class="icon-X"></a></li>
                         </ul>
-                    </div><br>
-
+                    </div>
+                    <hr>
+                    <section class="resume-lang-section resume-section">
+                        <h1 class="h5 text-uppercase py-2 py-lg-3 py-3"><i class="bi bi-translate me-2"></i>Langues</h1>
+                        <ul class="list-unstyled resume-lang-list">
+                            <li class="mb-4">
+                                <div class="resume-skill-name text-capitalize">Francais</div>
+                                <div class="progress resume-progress mt-2" role="progressbar" aria-label="Basic example"
+                                    aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar resume-progress-bar" style="width: 85%"></div>
+                                </div><!--//resume-level-indicator-->
+                            </li>
+                            <li class="mb-2">
+                                <div class="resume-skill-name">Anglais</div>
+                                <div class="progress resume-progress mt-2" role="progressbar" aria-label="Basic example"
+                                    aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar resume-progress-bar" style="width: 70%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
                 <div class="col-lg-8">
                     <!-- section-about -->
@@ -81,10 +100,7 @@
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">D'expérience en IT</p>
-                                <div class="item-shape">
-                                    <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                        alt="item">
-                                </div>
+
                             </div>
                             <div class="counter-item bs-light-mode">
                                 <div class="counter-number h2 text_white mb_7">
@@ -93,10 +109,7 @@
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">Clients Satisfaits</p>
-                                <div class="item-shape">
-                                    <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                        alt="item">
-                                </div>
+
                             </div>
                             <div class="counter-item bs-light-mode">
                                 <div class="counter-number h2 text_white mb_7">
@@ -105,10 +118,7 @@
                                     <span class="sub">+</span>
                                 </div>
                                 <p class="text-body-1 text_muted-color font-3">Projets Terminés</p>
-                                {{-- <div class="item-shape">
-                                    <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                        alt="item">
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
@@ -120,13 +130,16 @@
                         <div class="list-icons d-flex  cursor-pointer "
                             style="overflow-x: scroll;width: 100%; padding-bottom: 10px;">
                             <div title="PHP"><img src="{{ asset('upload/skills/1794217278408413.png') }}"
-                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;">
                             </div>
                             <div title="Laravel"><img src="{{ asset('upload/skills/1794217189325281.png') }}"
-                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;">
                             </div>
                             <div title="Bootstrap"><img src="{{ asset('upload/skills/1794217322879346.png') }}"
-                                    alt="image" width="30px" height="30px" style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px"
+                                    style="margin: 10px;cursor:pointer;">
                             </div>
                             <div title="Vuejs"><img src="{{ asset('upload/skills/1794217805784333.png') }}"
                                     alt="image" width="30px" height="30px"
@@ -529,10 +542,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="item-shape spotlight">
-                                <img src="images/item/small-comet.webp" loading="lazy" decoding="async"
-                                    alt="item">
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -577,7 +587,9 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <form class="form-contact bs-light-mode">
+                        <form class="form-contact bs-light-mode" method="POST"
+                            action="{{ route('add.contact.store') }}">
+                            @csrf
                             <div class="d-grid gap_24  mb_24">
                                 <fieldset class="">
                                     <input id="name" type="text" placeholder="Votre nom" name="name"
@@ -585,8 +597,7 @@
                                 </fieldset>
                                 <fieldset class="">
                                     <input class="" type="email" placeholder="Votre email" name="email"
-                                        tabindex="2" value="" id="email" aria-required="true"
-                                        required="">
+                                        tabindex="2" id="email" aria-required="true" required="">
                                 </fieldset>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -610,8 +621,8 @@
                                     </div>
                                 </div>
                                 <fieldset>
-                                    <textarea id="message" class="" rows="4" placeholder="votre Message..." tabindex="2"
-                                        aria-required="true" required=""></textarea>
+                                    <textarea id="message" name="message" class="" rows="4" placeholder="votre Message..."
+                                        tabindex="2" aria-required="true" required=""></textarea>
                                 </fieldset>
                             </div>
                             <div class="button-submit">

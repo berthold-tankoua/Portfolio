@@ -1366,9 +1366,9 @@ a:focus {
 }
 
 .body-overlay .bg-shape {
-    -webkit-mask: url("../images/item/bg-shape.svg") no-repeat center;
+    -webkit-mask: url("") no-repeat center;
     -webkit-mask-size: cover;
-    mask: url("../images/item/bg-shape.svg") no-repeat center;
+    mask: url("") no-repeat center;
     width: 100%;
     height: 100%;
     background: var(--Primary);

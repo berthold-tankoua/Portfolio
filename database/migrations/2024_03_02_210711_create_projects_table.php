@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('category_id');
-            $table->string('tools',1000);
+            $table->string('tools', 1000);
             $table->string('name')->nullable();
             $table->string('sub')->nullable();
             $table->string('ytb_link')->nullable();
             $table->string('slug')->nullable();
             $table->string('img_perf')->nullable();
-            $table->string('img_perf_url')->nullable();
+
             $table->string('title1')->nullable();
             $table->text('desc1')->nullable();
             $table->string('image1')->nullable();
-            $table->string('img_url1')->nullable();
+
             $table->string('title2')->nullable();
             $table->text('desc2')->nullable();
             $table->string('image2')->nullable();
@@ -32,11 +32,10 @@ return new class extends Migration
             $table->string('title3')->nullable();
             $table->text('desc3')->nullable();
             $table->string('image3')->nullable();
-            $table->string('img_url3')->nullable();
             $table->string('title4')->nullable();
             $table->text('desc4')->nullable();
             $table->string('image4')->nullable();
-            $table->string('img_url4')->nullable();
+
             $table->string('url')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
