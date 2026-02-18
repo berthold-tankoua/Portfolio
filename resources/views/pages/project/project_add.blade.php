@@ -39,7 +39,7 @@
                                         <h5>Sous titre<span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="sub" class="form-control"
-                                                value="Service | Site Web | Immobilier">
+                                                value="Site Web | Immobilier">
                                             @error('sub')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -109,25 +109,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h5>Langage Utilise <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="tools" class="form-control"
-                                                value="https://www.brecht.shopixup.com/upload/tools/php.png,https://www.brecht.shopixup.com/upload/tools/laravel.png,https://www.brecht.shopixup.com/upload/tools/html.png,https://www.brecht.shopixup.com/upload/tools/css.png,https://www.brecht.shopixup.com/upload/tools/bootstrap.png,https://www.brecht.shopixup.com/upload/tools/js.png,https://www.brecht.shopixup.com/upload/tools/jquery.png,https://www.brecht.shopixup.com/upload/tools/vuejs.png,https://www.brecht.shopixup.com/upload/tools/api.png,https://www.brecht.shopixup.com/upload/tools/database.png,https://www.brecht.shopixup.com/upload/tools/GitLab.png,https://www.brecht.shopixup.com/upload/tools/learning.png,https://www.brecht.shopixup.com/upload/tools/photoshop.png,https://www.brecht.shopixup.com/upload/tools/pwa.png,https://www.brecht.shopixup.com/upload/tools/map.png,https://www.brecht.shopixup.com/upload/tools/push_notif.png,https://www.brecht.shopixup.com/upload/tools/analytics.png"
-                                                data-role="tagsinput">
-                                            @error('tools')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <h5>Langage Utilise (Path) <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="tool_path" class="form-control"
-                                                value="upload/tools/php.png,upload/tools/laravel.png,upload/tools/html.png,upload/tools/css.png,upload/tools/bootstrap.png,upload/tools/js.png,upload/tools/jquery.png,upload/tools/vuejs.png,upload/tools/api.png,upload/tools/database.png,upload/tools/GitLab.png,upload/tools/learning.png,upload/tools/photoshop.png,upload/tools/pwa.png,upload/tools/map.png,upload/tools/push_notif.png,upload/tools/analytics.png"
+                                                value="upload/tools/php.png,upload/tools/laravel.png,upload/tools/html.png,upload/tools/css.png,upload/tools/bootstrap.png,upload/tools/js.png,upload/tools/jquery.png,upload/tools/vuejs.png,upload/tools/api.png,upload/tools/database.png,upload/tools/GitLab.png,upload/tools/learning.png,upload/tools/photoshop.png,upload/tools/pwa.png,upload/tools/map.png,upload/tools/push_notif.png,upload/tools/analytics.png,upload/tools/aws.png,upload/tools/linux.png,,upload/tools/git.png"
                                                 data-role="tagsinput">
                                             @error('tool_path')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -191,7 +179,7 @@
                                             <h5> Image <span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="file" id="image" name="image1"
-                                                    class="form-control">
+                                                    class="form-control" required>
 
                                                 <img src="" alt="image" id="showImg">
 
@@ -229,7 +217,7 @@
                                 <div class="row"> <!-- start 7th row  -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5> Image <span class="text-danger">*</span></h5>
+                                            <h5> Image <span class="text-danger">(optionnel)</span></h5>
                                             <div class="controls">
                                                 <input type="file" id="image" name="image2"
                                                     class="form-control">
@@ -270,7 +258,7 @@
                                 <div class="row"> <!-- start 7th row  -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5> Image <span class="text-danger">*</span></h5>
+                                            <h5> Image <span class="text-danger">(optionnel)</span></h5>
                                             <div class="controls">
                                                 <input type="file" id="image" name="image3"
                                                     class="form-control">
@@ -312,7 +300,7 @@
                                 <div class="row"> <!-- start 7th row  -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5> Image <span class="text-danger">*</span></h5>
+                                            <h5> Image <span class="text-danger">(optionnel)</span></h5>
                                             <div class="controls">
                                                 <input type="file" id="image" name="image4"
                                                     class="form-control">
