@@ -13,6 +13,22 @@
 
     <link href="{{ asset('/frontend/favicon.png') }}" rel="icon">
     <link href="{{ asset('/frontend/favicon.png') }}" rel="apple-touch-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Développeur Web fullstack et marketeur digital passionné !">
+    <meta property="og:description"
+        content="Trouvez des solutions innovantes pour vos projets numériques. Contactez-moi pour transformer vos idées en réalité !">
+    <meta property="og:image" content="{{ asset('frontend/img/og-image.jpg') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Développeur Web fullstack et marketeur digital passionné !">
+    <meta name="twitter:description"
+        content="Trouvez des solutions innovantes pour vos projets numériques. Contactez-moi pour transformer vos idées en réalité !">
+    <meta name="twitter:image" content="{{ asset('frontend/img/og-image.jpg') }}">
+
     <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/css/odometer.min.css') }}">
@@ -26,6 +42,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <!-- Icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/icons/icomoon/style.css') }}">
+
     <style>
         body>.skiptranslate {
             display: none;
