@@ -2,7 +2,7 @@
 
 @section('content')
 @section('title')
-    Brecht Tankoua | Portfolio
+    Brecht Tankoua | Mes Projets
 @endsection
 
 <div class="main-content style-fullwidth section-onepage">
@@ -11,9 +11,12 @@
 
         <!-- section-portfolio-->
         <div class="container">
-            <div id="portfolio" class="section-portfolio style-1 section">
+            <div id="portfolio" class="section-portfolio style-1 spacing-5 section" s>
                 <div class="heading-section mb_42">
-                    <h1 class="text_white fw-5  split-text effect-blur-fade h4">Mes Projets </h1>
+                    <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
+                        Portfolio
+                    </div>
+                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
                 </div>
                 <div class="tab-slide  mb_32">
                     <ul class="menu-tab d-flex align-items-center" role="tablist">
@@ -34,7 +37,7 @@
                     <div class="tab-pane active show" id="all" role="tabpanel">
                         <div class="row">
                             @foreach ($projects as $project)
-                                <article class="col-md-6 mb-4 mb-4 mt-4">
+                                <article class="col-md-6 mb-4 mt-1">
                                     <div class="p-2 mb-2 text-white">
                                         <div class="d-flex flex-wrap align-items-center mb-1">
                                             <a href="{{ url('project/' . $project->id . '/detail') }}"
@@ -44,7 +47,7 @@
                                             @endphp
                                             <div class="d-flex p-tool overflow-hidden mb-2">
                                                 @foreach ($project_tools as $key => $tool)
-                                                    <div class="item me-4">
+                                                    <div class="item me-3">
                                                         <img src="{{ asset($tool) }}" alt="portofolio-skill"
                                                             width="23" height="23">
                                                     </div>
@@ -56,22 +59,34 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <div class="text-white mbl-date">{{ $project->start_date }} |
+                                        <div class="d-flex justify-content-between mb-2 align-items-center">
+                                            <div class=" mbl-date">{{ $project->start_date }} |
                                                 {{ $project->end_date }}</div>
-                                            <a href="{{ $project->url }}"
-                                                class="mbldis resume-company-name">{{ $project->url }}</a>
+                                            @if ($project->ytb_link)
+                                                <div class="d-flex align-items-center">
+                                                    <a href="{{ $project->url }}"
+                                                        class="mbldis resume-company-name me-2">Consulter le lien</a>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <p>ou</p>
+                                                        <i class="bi bi-play-circle ms-2" id="{{ $project->ytb_link }}"
+                                                            data-video="{{ $project->ytb_link }}" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal"
+                                                            style="cursor: pointer;font-size:18px"
+                                                            title="Regarder la vidéo du projet"></i>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div><!--//resume-timeline-item-header-->
 
-                                    <a href="{{ url('project/' . $project->id . '/detail') }}" class="containers"
-                                        style="border-radius: 5px; height: 280px; width: 100%;">
+                                    <a href="{{ url('project/' . $project->id . '/detail') }}"
+                                        style="border-radius: 5px; width: 100%;">
                                         <img class="project_img"
                                             style="border-radius: 5px; height: 280px; width: 100%; object-fit:fill;"
                                             src="{{ asset($project->image1) }}" alt="project image" />
                                         <div class="overlay"></div>
                                     </a><br>
-                                </article><br><!--//resume-timeline-item-->
+                                </article><br><br><!--//resume-timeline-item-->
                             @endforeach
                         </div>
                     </div>
@@ -80,7 +95,7 @@
                             @php
                                 $category_projects = App\Models\Project::where('category_id', $category->id)
                                     ->orderBy('top', 'DESC')
-                                    ->limit(4)
+                                    ->limit(6)
                                     ->get();
                             @endphp
                             <div class="row">
@@ -108,11 +123,21 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-between mb-2">
+                                            <div class="d-flex justify-content-between mb-2 align-items-center">
                                                 <div class="text-white mbl-date">{{ $project->start_date }} |
                                                     {{ $project->end_date }}</div>
-                                                <a href="{{ $project->url }}"
-                                                    class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                                                @if ($project->ytb_link)
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ $project->url }}"
+                                                            class="mbldis resume-company-name me-2">Consulter le
+                                                            lien</a>
+                                                        <i class="bi bi-play-circle" id="{{ $project->ytb_link }}"
+                                                            data-video="{{ $project->ytb_link }}"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            style="cursor: pointer;font-size:18px"
+                                                            title="Regarder la vidéo du projet"></i>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div><!--//resume-timeline-item-header-->
 
@@ -130,13 +155,25 @@
                 </div>
 
             </div>
-            <div class="section-contact style-1 section spacing-6">
-                <div class="button-submit" style="display: flex; justify-content: center;">
-                    <a href="" class="tf-btn style-1 animate-hover-btn">
-                        <span>
-                            Afficher tous les projets !
-                        </span>
-                    </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="youtube_link" width="100%" height="315px" frameborder="0"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="#" class="btn btn-primary">voir sur Youtube</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -158,8 +195,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1" data-space-lg="12"
-                    data-space-md="12" data-space="12">
+                <div class="swiper " data-preview="2" data-destop="2" data-tablet="2" data-mobile="1"
+                    data-space-lg="12" data-space-md="12" data-space="12">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="testimonial-item area-effect">

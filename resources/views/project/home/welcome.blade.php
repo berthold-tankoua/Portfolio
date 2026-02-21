@@ -86,9 +86,9 @@
                             </div>
                         </div>
                         <h1 class="title mb_16 split-text effect-blur-fade h4">
-                            Backend | Frontend | Agent IA | SEO | Devops
+                            Dev fullstack | Agent IA | SEO | Devops
                         </h1>
-                        <div class="text_muted-color font-3 mb_43 split-text split-lines-transform">
+                        <div class="about_desc text_muted-color font-3 mb_43 split-text split-lines-transform">
                             {!! $about->desc1 !!}
                         </div>
                         <div class="wrap-counter tf-grid-layout md-col-3">
@@ -130,56 +130,40 @@
                         <div class="list-icons d-flex  cursor-pointer "
                             style="overflow-x: scroll;width: 100%; padding-bottom: 10px;">
                             <div title="PHP"><img src="{{ asset('upload/skills/1794217278408413.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px" class="skil_img me-4">
                             </div>
                             <div title="Laravel"><img src="{{ asset('upload/skills/1794217189325281.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px" class="skil_img me-4">
                             </div>
                             <div title="Bootstrap"><img src="{{ asset('upload/skills/1794217322879346.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;">
+                                    alt="image" width="30px" height="30px" class="skil_img me-4">
                             </div>
                             <div title="Vuejs"><img src="{{ asset('upload/skills/1794217805784333.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="IA"><img src="{{ asset('upload/skills/1846653782352044.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="PWA"><img src="{{ asset('upload/skills/1821402864701050.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Javascript"><img src="{{ asset('upload/skills/1794217521134374.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Css"><img src="{{ asset('upload/skills/1794217351642580.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="HTML"><img src="{{ asset('upload/skills/1794217464578210.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Aws"><img src="{{ asset('upload/skills/1857258320482256.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Git"><img src="{{ asset('upload/skills/1857258344083463.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="MySql"><img src="{{ asset('upload/skills/1794217565856740.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Api"><img src="{{ asset('upload/skills/1794217546197747.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Linux"><img src="{{ asset('upload/skills/1857258827130950.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Meta"><img src="{{ asset('upload/skills/1794217726185141.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                             <div title="Test unitaire"><img src="{{ asset('upload/skills/1794217845985882.png') }}"
-                                    alt="image" width="30px" height="30px"
-                                    style="margin: 10px;cursor:pointer;"></div>
+                                    alt="image" width="30px" height="30px" class="skil_img me-4"></div>
                         </div>
                     </div>
                 </div>
@@ -213,7 +197,7 @@
                     <div class="tab-pane active show" id="all" role="tabpanel">
                         <div class="row">
                             @foreach ($projects as $project)
-                                <article class="col-md-6 mb-4 mt-2">
+                                <article class="col-md-6 mb-4 mt-1">
                                     <div class="p-2 mb-2 text-white">
                                         <div class="d-flex flex-wrap align-items-center mb-1">
                                             <a href="{{ url('project/' . $project->id . '/detail') }}"
@@ -223,7 +207,7 @@
                                             @endphp
                                             <div class="d-flex p-tool overflow-hidden mb-2">
                                                 @foreach ($project_tools as $key => $tool)
-                                                    <div class="item me-4">
+                                                    <div class="item me-3">
                                                         <img src="{{ asset($tool) }}" alt="portofolio-skill"
                                                             width="23" height="23">
                                                     </div>
@@ -235,22 +219,35 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <div class="text-white mbl-date">{{ $project->start_date }} |
+                                        <div class="d-flex justify-content-between mb-2 align-items-center">
+                                            <div class=" mbl-date">{{ $project->start_date }} |
                                                 {{ $project->end_date }}</div>
-                                            <a href="{{ $project->url }}"
-                                                class="mbldis resume-company-name">{{ $project->url }}</a>
+                                            @if ($project->ytb_link)
+                                                <div class="d-flex align-items-center">
+                                                    <a href="{{ $project->url }}"
+                                                        class="mbldis resume-company-name me-2">Consulter le lien</a>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <p>ou</p>
+                                                        <i class="bi bi-play-circle ms-2"
+                                                            id="{{ $project->ytb_link }}"
+                                                            data-video="{{ $project->ytb_link }}"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            style="cursor: pointer;font-size:18px"
+                                                            title="Regarder la vidéo du projet"></i>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div><!--//resume-timeline-item-header-->
 
-                                    <a href="{{ url('project/' . $project->id . '/detail') }}" class="containers"
-                                        style="border-radius: 5px; height: 280px; width: 100%;">
+                                    <a href="{{ url('project/' . $project->id . '/detail') }}"
+                                        style="border-radius: 5px; width: 100%;">
                                         <img class="project_img"
                                             style="border-radius: 5px; height: 280px; width: 100%; object-fit:fill;"
                                             src="{{ asset($project->image1) }}" alt="project image" />
                                         <div class="overlay"></div>
                                     </a><br>
-                                </article><br><!--//resume-timeline-item-->
+                                </article><br><br><!--//resume-timeline-item-->
                             @endforeach
                         </div>
                     </div>
@@ -259,7 +256,7 @@
                             @php
                                 $category_projects = App\Models\Project::where('category_id', $category->id)
                                     ->orderBy('top', 'DESC')
-                                    ->limit(4)
+                                    ->limit(6)
                                     ->get();
                             @endphp
                             <div class="row">
@@ -287,11 +284,21 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-between mb-2">
+                                            <div class="d-flex justify-content-between mb-2 align-items-center">
                                                 <div class="text-white mbl-date">{{ $project->start_date }} |
                                                     {{ $project->end_date }}</div>
-                                                <a href="{{ $project->url }}"
-                                                    class="mbldis resume-company-name text-white">{{ $project->url }}</a>
+                                                @if ($project->ytb_link)
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ $project->url }}"
+                                                            class="mbldis resume-company-name me-2">Consulter le
+                                                            lien</a>
+                                                        <i class="bi bi-play-circle" id="{{ $project->ytb_link }}"
+                                                            data-video="{{ $project->ytb_link }}"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            style="cursor: pointer;font-size:18px"
+                                                            title="Regarder la vidéo du projet"></i>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div><!--//resume-timeline-item-header-->
 
@@ -318,6 +325,28 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="youtube_link" width="100%" height="315px" frameborder="0"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="#" class="btn btn-primary">voir sur Youtube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- section-resume-->
             <div id="resume" class="section-resume style-1 pb-0 spacing-4 section">
                 <div class="heading-section mb_47">

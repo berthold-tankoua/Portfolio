@@ -4654,6 +4654,18 @@ ANIMATION AREA CSS
     .main-content {
         padding-top: 25px;
     }
+
+    .skil_img {
+        width: 35px;
+        height: 35px;
+        margin-right: 50px !important;
+    }
+
+    .about_desc {
+        height: 120px !important;
+        overflow: hidden !important;
+        overflow-y: scroll !important;
+    }
 }
 
 @media (min-width: 768px) {

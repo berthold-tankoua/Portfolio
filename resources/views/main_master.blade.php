@@ -40,6 +40,7 @@
     <!-- Font -->
     <link rel="stylesheet" href="{{ asset('/frontend/font/fonts.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/icons/icomoon/style.css') }}">
 
@@ -486,6 +487,19 @@
                     break;
             }
         @endif
+    </script>
+    <script>
+        $(document).on('click', '.bi-play-circle', function() {
+
+            let videoId = $(this).data('video');
+
+
+
+            let embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+
+            $("#youtube_link").attr("src", embedUrl);
+
+        });
     </script>
 
 </body>
