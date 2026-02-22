@@ -176,7 +176,7 @@
                     <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
                         Portfolio
                     </div>
-                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets </h3>
+                    <h3 class="text_white fw-5  split-text effect-blur-fade">Mes Projets <span></span></h3>
                 </div>
                 <div class="tab-slide  mb_32">
                     <ul class="menu-tab d-flex align-items-center" role="tablist">
@@ -250,6 +250,15 @@
                                 </article><br><br><!--//resume-timeline-item-->
                             @endforeach
                         </div>
+                        <div class="section-contact style-1 section spacing-6">
+                            <div class="button-submit" style="display: flex; justify-content: center;">
+                                <a href="{{ url('project/list') }}" class="tf-btn style-1 animate-hover-btn">
+                                    <span>
+                                        Afficher tous les projets !
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     @foreach ($categories as $category)
                         <div class="tab-pane" id="{{ $category->slug }}" role="tabpanel">
@@ -311,19 +320,20 @@
                                     </article><br><!--//resume-timeline-item-->
                                 @endforeach
                             </div>
+                            <div class="section-contact style-1 section spacing-6">
+                                <div class="button-submit" style="display: flex; justify-content: center;">
+                                    <a href="{{ url('category/' . $category->id . '/' . $category->slug) }}"
+                                        class="tf-btn style-1 animate-hover-btn">
+                                        <span>
+                                            Afficher tous les projets !
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
 
-            </div>
-            <div class="section-contact style-1 section spacing-6">
-                <div class="button-submit" style="display: flex; justify-content: center;">
-                    <a href="{{ url('project/list') }}" class="tf-btn style-1 animate-hover-btn">
-                        <span>
-                            Afficher tous les projets !
-                        </span>
-                    </a>
-                </div>
             </div>
 
             <!-- Modal -->

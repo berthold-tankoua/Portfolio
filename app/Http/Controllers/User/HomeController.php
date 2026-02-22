@@ -46,18 +46,13 @@ class HomeController extends Controller
     public function ProjectCategory($id)
     {
         $category = Category::where('id', $id)->first();
-        $projects = Project::where('category_id', $id)->orderBy('id', 'DESC')->get();
+        $projects = Project::where('category_id', $id)->orderBy('top', 'DESC')->get();
         $services = Service::latest()->get();
         $skills = Skill::orderBy('name', 'ASC')->get();
+        $about = About::where('id', 1)->first();
 
         $formations = Formation::latest()->get();
-        if ($id == 4) {
-            return view('frontend.category.maintenance', compact('services', 'projects', 'formations', 'skills', 'category'));
-        } elseif ($id == 3) {
-            return view('frontend.category.infographie', compact('services', 'projects', 'formations', 'skills', 'category'));
-        } else {
-            return view('project.category.category', compact('services', 'projects', 'formations', 'skills', 'category'));
-        }
+        return view('project.category.category', compact('services', 'projects', 'formations', 'skills', 'category', 'about'));
     } //End Method
 
     public function ProjectDetail($id)

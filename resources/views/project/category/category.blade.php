@@ -11,12 +11,13 @@
 
         <!-- section-portfolio-->
         <div class="container">
-            <div id="portfolio" class="section-portfolio style-1 spacing-5 section" s>
+            <h1 class="h5">{{ $category->name }} <span>({{ $projects->count() }})</span></h1>
+            <div id="portfolio" class="section-portfolio style-1 spacing-5 section">
                 <div class="tab-content">
                     <div class="tab-pane active show" id="all" role="tabpanel">
                         <div class="row">
                             @foreach ($projects as $project)
-                                <article class="col-md-6 mb-4 mt-1">
+                                <article class="col-md-6 mb-4 mt-2">
                                     <div class="p-2 mb-2 text-white">
                                         <div class="d-flex flex-wrap align-items-center mb-1">
                                             <a href="{{ url('project/' . $project->id . '/detail') }}"
